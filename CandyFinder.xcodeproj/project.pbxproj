@@ -11,7 +11,6 @@
 		046DFCA8151A52E3007A7DF6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 046DFCA7151A52E3007A7DF6 /* CFNetwork.framework */; };
 		046DFCB2151A5581007A7DF6 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 046DFCB1151A5581007A7DF6 /* libsqlite3.0.dylib */; };
 		046DFCB9151A577D007A7DF6 /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = 046DFCB8151A577D007A7DF6 /* EasyTracker.plist */; };
-		0488822A1535FD9E00C2D31B /* README.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 048882291535FD9E00C2D31B /* README.rtf */; };
 		0488824B1535FEBD00C2D31B /* background_AddBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 0488822C1535FEBD00C2D31B /* background_AddBody.png */; };
 		0488824C1535FEBD00C2D31B /* background_AddBody_half.png in Resources */ = {isa = PBXBuildFile; fileRef = 0488822D1535FEBD00C2D31B /* background_AddBody_half.png */; };
 		0488824D1535FEBD00C2D31B /* background_AddHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 0488822E1535FEBD00C2D31B /* background_AddHeader.png */; };
@@ -73,6 +72,7 @@
 		048882CC1536016200C2D31B /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 048882C81536016200C2D31B /* NSString+MD5Addition.m */; };
 		048882CD1536016200C2D31B /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 048882CA1536016200C2D31B /* UIDevice+IdentifierAddition.m */; };
 		048882CF1536018500C2D31B /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 048882CE1536018500C2D31B /* libGoogleAnalytics.a */; };
+		048882D31536060B00C2D31B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 048882D21536060B00C2D31B /* README.md */; };
 		048B895E151CF4B80079D6B5 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 048B895D151CF4B80079D6B5 /* libFlurryAnalytics.a */; };
 		04D101F6151D0EA500C37A94 /* history.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04D101F5151D0EA500C37A94 /* history.plist */; };
 		04D47E2E1519B41C002E0F29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D47E2D1519B41C002E0F29 /* UIKit.framework */; };
@@ -129,7 +129,6 @@
 		046DFCA7151A52E3007A7DF6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		046DFCB1151A5581007A7DF6 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		046DFCB8151A577D007A7DF6 /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
-		048882291535FD9E00C2D31B /* README.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = README.rtf; sourceTree = "<group>"; };
 		0488822C1535FEBD00C2D31B /* background_AddBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_AddBody.png; sourceTree = "<group>"; };
 		0488822D1535FEBD00C2D31B /* background_AddBody_half.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_AddBody_half.png; sourceTree = "<group>"; };
 		0488822E1535FEBD00C2D31B /* background_AddHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_AddHeader.png; sourceTree = "<group>"; };
@@ -225,6 +224,7 @@
 		048882C91536016200C2D31B /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
 		048882CA1536016200C2D31B /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		048882CE1536018500C2D31B /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
+		048882D21536060B00C2D31B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		048B895C151CF4B80079D6B5 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
 		048B895D151CF4B80079D6B5 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		04D101F5151D0EA500C37A94 /* history.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = history.plist; sourceTree = "<group>"; };
@@ -503,7 +503,7 @@
 		04D47E1E1519B41C002E0F29 = {
 			isa = PBXGroup;
 			children = (
-				048882291535FD9E00C2D31B /* README.rtf */,
+				048882D21536060B00C2D31B /* README.md */,
 				0488826D1536000200C2D31B /* Appirater */,
 				0488827C1536002B00C2D31B /* Reachability */,
 				0488822B1535FEBD00C2D31B /* Images */,
@@ -778,7 +778,6 @@
 				04D47EA81519B6D1002E0F29 /* zbar-samples.png in Resources */,
 				046DFCB9151A577D007A7DF6 /* EasyTracker.plist in Resources */,
 				04D101F6151D0EA500C37A94 /* history.plist in Resources */,
-				0488822A1535FD9E00C2D31B /* README.rtf in Resources */,
 				0488824B1535FEBD00C2D31B /* background_AddBody.png in Resources */,
 				0488824C1535FEBD00C2D31B /* background_AddBody_half.png in Resources */,
 				0488824D1535FEBD00C2D31B /* background_AddHeader.png in Resources */,
@@ -813,6 +812,7 @@
 				0488827A1536000200C2D31B /* Localizable.strings in Resources */,
 				0488827B1536000200C2D31B /* README.md in Resources */,
 				048882CB1536016200C2D31B /* license in Resources */,
+				048882D31536060B00C2D31B /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
