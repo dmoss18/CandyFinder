@@ -19,6 +19,9 @@
     
 }
 
+@property (nonatomic, strong) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) IBOutlet UIButton *rateButton;
+
 - (void) updateBadgeDisplay:(NSString *)text;
 - (IBAction)rateCandyfinder:(id)sender;
 

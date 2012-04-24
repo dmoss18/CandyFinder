@@ -8,7 +8,7 @@
 
 #import "Geocoder.h"
 #import "SynthesizeSingleton.h"
-#import "Classes/SBJson.h"
+#import "SBJson.h"
 #import "globals.h"
 #import "AppDelegate.h"
 
@@ -64,7 +64,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Geocoder);
             currentLocation.state = [((NSDictionary *)[addressComponents objectAtIndex:3]) objectForKey:@"long_name"];
             currentLocation.zip = [((NSDictionary *)[addressComponents objectAtIndex:([addressComponents count] - 1)]) objectForKey:@"long_name"];
         }
-        AppDelegate *app = [[UIApplication sharedApplication] delegate];
+        AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         app.currentLocation = currentLocation;
     }
 }

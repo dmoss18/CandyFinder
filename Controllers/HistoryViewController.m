@@ -47,8 +47,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    toggleRowColor = YES;
 }
 
 - (void)viewDidUnload
@@ -115,14 +113,12 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    if(toggleRowColor) {
+    if([indexPath row] % 2 == 0) {
         cell.backgroundView = [[UIView alloc] init ]; 
         cell.backgroundView.backgroundColor = LIGHT_BLUE;
-        toggleRowColor = NO;
     } else {
         cell.backgroundView = [[UIView alloc] init ]; 
         cell.backgroundView.backgroundColor = DARK_BLUE;
-        toggleRowColor = YES;
     }
     
     Candy *candy = [self.listContent objectAtIndex:indexPath.row];
@@ -132,6 +128,8 @@
     cell.detailTextLabel.text = candy.subtitle;
     UIImage *image = [UIImage imageNamed:@"milkyway.png"];
     cell.imageView.image = image;
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     
     /*UILabel *mapLabel = [[UILabel alloc] initWithFrame:CGRectMake(245.0, 14.0, 50.0, 15.0)];
     mapLabel.tag = 1;

@@ -47,9 +47,6 @@
     
     //Indicator is displayed while search results are loading
     UIActivityIndicatorView *indicator;
-    
-    //Used to toggle the row color of the table view cells.
-    BOOL toggleRowColor;
 }
 
 //@property (nonatomic, retain) IBOutlet UISearchBar *searchBar;

@@ -37,9 +37,6 @@
     
     //Indicator is displayed while search results are being loaded
     UIActivityIndicatorView *indicator;
-    
-    //Used to toggle the color of the table view rows.
-    BOOL toggleRowColor;
 }
 
 @property(nonatomic, strong) NSString *searchText;

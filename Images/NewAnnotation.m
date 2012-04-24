@@ -17,7 +17,6 @@
 - (void)baseInit {
     label = [[UILabel alloc] init];
     label.text = @"We can put stuff here";
-    CGRect labelFrame = CGRectMake(15, 15, 60, 30);
     //label.frame = labelFrame;
     label.frame = self.frame;
     label.textColor = [UIColor colorWithRed:0.3 green:0.3 blue:1.0 alpha:1.0];

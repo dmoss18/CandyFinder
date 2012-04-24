@@ -8,7 +8,7 @@
 
 #import "LocationPoster.h"
 #import "SynthesizeSingleton.h"
-#import "Classes/SBJson.h"
+#import "SBJson.h"
 #import "Web.h"
 #import "globals.h"
 #import "AppDelegate.h"

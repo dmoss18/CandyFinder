@@ -8,7 +8,7 @@
 
 #import "Web.h"
 #import "SynthesizeSingleton.h"
-#import "Classes/SBJson.h"
+#import "SBJson.h"
 #import "globals.h"
 #import "UIDevice+IdentifierAddition.h"
 

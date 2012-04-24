@@ -7,7 +7,7 @@
 //
 
 #import "TagCandyViewController.h"
-#import "Classes/SBJson.h"
+#import "SBJson.h"
 #import "MapViewController.h"
 #import "NewLocationViewController.h"
 #import "Candy.h"
@@ -67,8 +67,6 @@
     [segment addTarget:self action:@selector(segmentSwitch:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.searchDisplayController.searchBar setBackgroundImage:[UIImage imageNamed:@"background_find_bot.png"]];
-    
-    toggleRowColor = YES;
 }
 
 - (void)viewDidUnload
@@ -88,6 +86,8 @@
     if([LocationPoster sharedLocationPoster].currentLocation == nil) {
         [self.navigationController popViewControllerAnimated:YES];
     }
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Top Bar Blank.png"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -148,14 +148,12 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    if(toggleRowColor) {
+    if([indexPath row] % 2 == 0) {
         cell.backgroundView = [[UIView alloc] init ]; 
         cell.backgroundView.backgroundColor = LIGHT_BLUE;
-        toggleRowColor = NO;
     } else {
         cell.backgroundView = [[UIView alloc] init ]; 
         cell.backgroundView.backgroundColor = DARK_BLUE;
-        toggleRowColor = YES;
     }
     
     /*
@@ -169,6 +167,8 @@
     cell.detailTextLabel.text = candy.subtitle;
     UIImage *image = [UIImage imageNamed:@"milkyway.png"];
     cell.imageView.image = image;
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     
     /*UILabel *mapLabel = [[UILabel alloc] initWithFrame:CGRectMake(215.0, 14.0, 100.0, 15.0)];
     mapLabel.tag = MAP_LABEL_TAG;
@@ -320,16 +320,17 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     [indicator stopAnimating];
     
-    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    
-	NSDictionary *candyInfo = [responseString JSONValue];
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
     
-    NSMutableString *text = [NSMutableString stringWithString:@"Candy not found."];
+    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
-    for (NSDictionary *item in candyInfo){
+    if(![responseString isEqualToString:@"null"]) {
+        NSDictionary *candyInfo = [responseString JSONValue];
         
-        [tempArray addObject:[Candy candyFromDictionary:item]];
+        for (NSDictionary *item in candyInfo){
+            
+            [tempArray addObject:[Candy candyFromDictionary:item]];
+        }
     }
     
     self.listContent = tempArray;
@@ -338,7 +339,12 @@
     [self.tableView reloadData];
     
     if(listContent.count == 0){
-        [FlurryAnalytics logEvent:CANDY_NOT_FOUND withParameters:[NSDictionary dictionaryWithObject:self.searchDisplayController.searchBar.text forKey:@"searched_text"]];
+        NSString *searchText = self.searchDisplayController.searchBar.text;
+        if(searchText) {
+            [FlurryAnalytics logEvent:CANDY_NOT_FOUND withParameters:[NSDictionary dictionaryWithObject:self.searchDisplayController.searchBar.text forKey:@"searched_text"]];
+        } else {
+            
+        }
         
         //make add button visible
         //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pushAddCandyController)];
@@ -404,17 +410,23 @@
         // EXAMPLE: just grab the first barcode
         break;
     
-    // EXAMPLE: do something useful with the barcode data
-    NSLog(@"%@", symbol.data);
-    //Chop off leading 0 (if it's 13 digits)
-    self.sku = [NSString stringWithFormat:@"%@", symbol.data];
-    
-    //Using NSURL send the message
-    responseData = [NSMutableData data];
-    
-    NSURLRequest *request = [[Web sharedWeb] searchSKURequest:symbol.data];
-    
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    if(symbol) {
+        // EXAMPLE: do something useful with the barcode data
+        NSLog(@"%@", symbol.data);
+        //Chop off leading 0 (if it's 13 digits)
+        self.sku = [NSString stringWithFormat:@"%@", symbol.data];
+        
+        //Using NSURL send the message
+        responseData = [NSMutableData data];
+        
+        NSURLRequest *request = [[Web sharedWeb] searchSKURequest:symbol.data];
+        
+        [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    } else {
+        self.listContent = [[NSArray alloc] init];
+        [self.searchDisplayController.searchResultsTableView reloadData];
+        [self.tableView reloadData];
+    }
     
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
     [reader dismissModalViewControllerAnimated: YES];

@@ -23,26 +23,25 @@
     c.title = [item objectForKey:@"title"];
     c.subtitle = [item objectForKey:@"subtitle"];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:SS'Z'"];
     c.created_at = [dateFormat dateFromString:[item objectForKey:@"created_at"]];
     c.updated_at = [dateFormat dateFromString:[item objectForKey:@"updated_at"]];
     return c;
 }
 
-+(NSMutableArray *)unserialize:(NSDictionary *)items {
-    NSEnumerator *enumerator = [items objectEnumerator];
-    id value;
++(NSMutableArray *)unserialize:(NSArray *)items {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
-    while (value = [enumerator nextObject]) {
+    for(NSDictionary *dict in items) {
         //should be a candy in dictionary form
         Candy *c = [[Candy alloc] init];
-        c.title = [value objectForKey:@"title"];
-        c.subtitle = [value objectForKey:@"subtitle"];
-        c.sku = [value objectForKey:@"sku"];
-        c.candy_id = [value objectForKey:@"candy_id"];
-        c.created_at = [value objectForKey:@"created_at"];
-        c.updated_at = [value objectForKey:@"updated_at"];
+        c.title = [dict objectForKey:@"title"];
+        c.subtitle = [dict objectForKey:@"subtitle"];
+        c.sku = [dict objectForKey:@"sku"];
+        c.candy_id = [dict objectForKey:@"candy_id"];
+        c.created_at = [dict objectForKey:@"created_at"];
+        c.updated_at = [dict objectForKey:@"updated_at"];
         
         [array addObject:c];
     }
@@ -51,14 +50,15 @@
 }
 
 +(NSData *)serialize:(NSArray *)items {
-    NSMutableDictionary *plistDict = [[NSMutableDictionary alloc] init];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
     for(int i = 0; i < [items count]; i++) {
         Candy *c = (Candy *)[items objectAtIndex:i];
-        [plistDict setObject:[self dictionaryFromCandy:c] forKey:[NSString stringWithFormat:@"Item %i", i]];
+        NSDictionary *dict = [self dictionaryFromCandy:c];
+        [array addObject:dict];
     }
     
     NSString *error = nil;
-    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict
+    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:array
                                                                    format:NSPropertyListXMLFormat_v1_0
                                                          errorDescription:&error];
     

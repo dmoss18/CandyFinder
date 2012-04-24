@@ -9,7 +9,7 @@
 #import "AnnotationDetails.h"
 #import "Candy.h"
 #import "Location.h"
-#import "Classes/SBJson.h"
+#import "SBJson.h"
 #import "globals.h"
 #import "TagCandyViewController.h"
 #import "FlurryAnalytics.h"

@@ -11,6 +11,8 @@
 
 @implementation InfoViewController
 
+@synthesize webView, rateButton;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -51,6 +53,12 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    NSURL *url = [NSURL URLWithString:@"http://www.candyfinder.net/mobile"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [webView loadRequest:request];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -68,7 +76,7 @@
         //[self.tabBarItem setBadgeValue:@""];
         [self.tabBarItem setBadgeValue:nil];
     } else {
-        [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%@", badgeNumber - 1]];
+        [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%i", badgeNumber - 1]];
     }
     
     [Appirater rateApp];

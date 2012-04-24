@@ -10,7 +10,7 @@
 #import "Location.h"
 #import "AppDelegate.h"
 #import "globals.h"
-#import "Classes/SBJson.h"
+#import "SBJson.h"
 #import "LocationPoster.h"
 #import "FlurryAnalytics.h"
 
@@ -47,8 +47,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    toggleRowColor = YES;
-    
     self.responseData = [NSMutableArray arrayWithCapacity:[self.listContent count]];
     self.filteredListContent = [NSMutableArray arrayWithCapacity:[self.listContent count]];
     
@@ -57,9 +55,6 @@
     
     //[self.searchDisplayController.searchBar setBackgroundImage:[UIImage imageNamed:@"chocolate_pixel.png"]];
     //[self.searchDisplayController.searchBar setTintColor:[UIColor colorWithRed:0.969 green:0.9098 blue:0.937 alpha:1.0]];
-    [self.searchDisplayController.searchBar setBackgroundImage:[UIImage imageNamed:@"background_find_bot.png"]];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"background_AddHeader.png"] forBarMetrics:UIBarMetricsDefault];
     
     /*
     Location *tmpLoc = [LocationPoster sharedLocationPoster].currentLocation;
@@ -86,6 +81,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.searchDisplayController.searchBar setBackgroundImage:[UIImage imageNamed:@"background_find_bot.png"]];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"background_AddHeader.png"] forBarMetrics:UIBarMetricsDefault];
     
     NetworkStatus remoteHostStatus = [((AppDelegate *)[[UIApplication sharedApplication] delegate]).reachability currentReachabilityStatus];
     
@@ -189,14 +188,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    if(toggleRowColor) {
+    if([indexPath row] % 2 == 0) {
         cell.backgroundView = [[UIView alloc] init ]; 
         cell.backgroundView.backgroundColor = LIGHT_BLUE;
-        toggleRowColor = NO;
     } else {
         cell.backgroundView = [[UIView alloc] init ]; 
         cell.backgroundView.backgroundColor = DARK_BLUE;
-        toggleRowColor = YES;
     }
     
     Location *l = nil;
@@ -216,12 +213,15 @@
     } else {
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", l.city];
     }
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     
     UILabel *distanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(227.0, 11.0, 43.0, 21.0)];
     distanceLabel.text = [NSString stringWithFormat:@"%.1f mi", l.distance];
     distanceLabel.font = [UIFont systemFontOfSize:14.0];
     distanceLabel.textAlignment = UITextAlignmentLeft;
     distanceLabel.textColor = [UIColor lightGrayColor];
+    distanceLabel.backgroundColor = [UIColor clearColor];
     distanceLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
     [cell setAccessoryView:distanceLabel];
     

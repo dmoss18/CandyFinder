@@ -251,10 +251,11 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     if ([self isBetterLocation:newLocation]){
         self.bestLocation = newLocation;
-        
-        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(bestLocation.coordinate, 800, 800);
-        MKCoordinateRegion adjustedRegion = [mapView regionThatFits:viewRegion];
-        [mapView setRegion:adjustedRegion animated:YES];
+        if(isFirstTimeLoading) {
+            MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(bestLocation.coordinate, 800, 800);
+            MKCoordinateRegion adjustedRegion = [mapView regionThatFits:viewRegion];
+            [mapView setRegion:adjustedRegion animated:YES];
+        }
     }
 }
 

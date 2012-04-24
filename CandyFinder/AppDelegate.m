@@ -27,13 +27,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
-    
+    //Customize Appearances
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Top Bar Blank.png"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTintColor:DARK_PINK];
     [[UISearchBar appearance] setTintColor:DARK_PINK];
-    //[[UISearchBar appearance] setBackgroundColor:CHOCOLATE];
+    
+    //Begin checking network connectivity and handle a change of connectivity
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
     
     self.reachability = [Reachability reachabilityForInternetConnection];
     [reachability startNotifier];
@@ -55,9 +55,11 @@
         NSLog(@"cell"); 
     }
     
+    //Begin running Flury Analytics
     [FlurryAnalytics startSession:FLURRY_API_KEY];
     [FlurryAnalytics setUserID:[[UIDevice currentDevice] uniqueDeviceIdentifier]];
     
+    //Start up location manager and motion manager to get user's location
     motionManager = [[CMMotionManager alloc] init];
     if (motionManager.accelerometerAvailable) {
         motionManager.accelerometerUpdateInterval = 1.0/2.0;
@@ -78,6 +80,7 @@
     [locationManager startUpdatingLocation];
     isLocating = YES;
     
+    //Start Appirater to see when to display the info badge for the user to rate this app
     [Appirater appLaunched:YES];
     
     return YES;
@@ -241,7 +244,7 @@
     NSString *plistPath = [rootPath stringByAppendingPathComponent:@"history.plist"];
     
     NSMutableArray *array = [self readHistoryPlist];
-    while([array count] > 25) {
+    while([array count] >= 25) {
         //For now, we're just showing 25 items in history
         //So we remove the last object in the array here
         [array removeObjectAtIndex:[array count] -1];
@@ -299,7 +302,7 @@
     }
     NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
     
-    NSDictionary *temp = (NSDictionary *)[NSPropertyListSerialization
+    NSArray *temp = (NSArray *)[NSPropertyListSerialization
                                           
                                           propertyListFromData:plistXML
                                           
@@ -344,9 +347,9 @@
     NSString *badge = [infoController.tabBarItem badgeValue];
     NSInteger badgeNumber = [badge integerValue];
     if((badgeNumber - 1) < 1) {
-        [infoController.tabBarItem setBadgeValue:@""];
+        [infoController.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%i", 1]];
     } else {
-        [infoController.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%@", badgeNumber - 1]];
+        [infoController.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%i", badgeNumber - 1]];
     }
 }
 

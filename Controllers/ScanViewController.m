@@ -7,7 +7,7 @@
 //
 
 #import "ScanViewController.h"
-#import "Classes/SBJson.h"
+#import "SBJson.h"
 #import "Candy.h"
 #import "MapViewController.h"
 #import "AppDelegate.h"

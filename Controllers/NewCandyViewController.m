@@ -7,7 +7,7 @@
 //
 
 #import "NewCandyViewController.h"
-#import "Classes/SBJson.h"
+#import "SBJson.h"
 #import "AppDelegate.h"
 #import "Web.h"
 #import "FlurryAnalytics.h"
@@ -116,26 +116,30 @@
         // EXAMPLE: just grab the first barcode
         break;
     
-    // EXAMPLE: do something useful with the barcode data
-    self.sku = [NSString stringWithFormat:@"%@", symbol.data];
-    skuTextField.text = sku;
-    
-    imageView.image = [info objectForKey: UIImagePickerControllerOriginalImage];
-    
-    //Using NSURL send the message
-    responseData = [NSMutableData data];
-    
-    //So the url will be http://candyfinder.net/search/sku/123456789012
-    NSString *url = [NSString stringWithFormat:SEARCH_SKU, symbol.data];
-    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setHTTPMethod:@"POST"];
-    
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    // ADD: dismiss the controller (NB dismiss from the *reader*!)
-    [reader dismissModalViewControllerAnimated: YES];
+    if(symbol) {
+        // EXAMPLE: do something useful with the barcode data
+        self.sku = [NSString stringWithFormat:@"%@", symbol.data];
+        skuTextField.text = sku;
+        
+        imageView.image = [info objectForKey: UIImagePickerControllerOriginalImage];
+        
+        //Using NSURL send the message
+        responseData = [NSMutableData data];
+        
+        //So the url will be http://candyfinder.net/search/sku/123456789012
+        NSString *url = [NSString stringWithFormat:SEARCH_SKU, symbol.data];
+        url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [request setHTTPMethod:@"POST"];
+        
+        [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        // ADD: dismiss the controller (NB dismiss from the *reader*!)
+        [reader dismissModalViewControllerAnimated: YES];
+    } else {
+        //Display a label on the modal view controller saying "barcode not scanned.  try again"
+    }
 }
 
 - (void) imagePickerControllerDidCancel:(UIImagePickerController*)picker {
@@ -163,16 +167,21 @@
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", responseString);
     
-	NSDictionary *candyInfo = [responseString JSONValue];
-    
-    if([candyInfo count] > 0){
-        //If candy was found, populate fields
-        skuTextField.text = (NSString *)[candyInfo objectForKey:@"sku"];
-        brandTextField.text = (NSString *)[candyInfo objectForKey:@"title"];
-        typeTextField.text = (NSString *)[candyInfo objectForKey:@"subtitle"];
-    }else{
+    if(![responseString isEqualToString:@"null"]) {
+        NSDictionary *candyInfo = [responseString JSONValue];
+        
+        if([candyInfo count] > 0){
+            //If candy was found, populate fields
+            skuTextField.text = (NSString *)[candyInfo objectForKey:@"sku"];
+            brandTextField.text = (NSString *)[candyInfo objectForKey:@"title"];
+            typeTextField.text = (NSString *)[candyInfo objectForKey:@"subtitle"];
+            //Should we do something here to dismiss the controller, since 
+        } else {
+            //Candy not found
+            //Prompt user to manually enter the remaining fields
+        }
+    } else {
         //Candy not found
         //Prompt user to manually enter the remaining fields
     }

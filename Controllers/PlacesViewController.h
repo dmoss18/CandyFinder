@@ -33,7 +33,6 @@
     
     //Logic helper so the controller knows how to behave
     BOOL fromTag;
-    BOOL toggleRowColor;
 }
 
 @property(nonatomic, strong) NSString *userSearchText;

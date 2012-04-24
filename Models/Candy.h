@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSDate *updated_at;
 
 +(Candy *)candyFromDictionary:(NSDictionary *)item;
-+(NSMutableArray *)unserialize:(NSDictionary *)items;
++(NSMutableArray *)unserialize:(NSArray *)items;
 +(NSData *)serialize:(NSArray *)items;
 +(NSDictionary *)dictionaryFromCandy:(Candy *)candy;
 

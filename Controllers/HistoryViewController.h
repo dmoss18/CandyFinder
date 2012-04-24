@@ -14,8 +14,6 @@
 
 @interface HistoryViewController : UITableViewController {
     NSArray *listContent; //The master content
-    
-    BOOL toggleRowColor;
 }
 
 @property (nonatomic, strong) NSArray *listContent;
