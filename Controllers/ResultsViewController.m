@@ -7,7 +7,7 @@
 //
 
 #import "ResultsViewController.h"
-#import "SBJson.h"
+#import "JSON.h"
 #import "MapViewController.h"
 #import "AppDelegate.h"
 #import "NewCandyViewController.h"

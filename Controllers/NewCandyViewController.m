@@ -7,7 +7,7 @@
 //
 
 #import "NewCandyViewController.h"
-#import "SBJson.h"
+#import "JSON.h"
 #import "AppDelegate.h"
 #import "Web.h"
 #import "FlurryAnalytics.h"

@@ -8,10 +8,11 @@
 
 #import "InfoViewController.h"
 #import "Appirater.h"
+#import "AppDelegate.h"
 
 @implementation InfoViewController
 
-@synthesize webView, rateButton;
+@synthesize rateButton, profilePic, nameLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,9 +55,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSURL *url = [NSURL URLWithString:@"http://www.candyfinder.net/mobile"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:request];
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.nameLabel.text = app.user.name;
+    self.profilePic.image = app.user.pic;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -80,6 +81,14 @@
     }
     
     [Appirater rateApp];
+}
+
+
+
+//======Logout==========
+- (IBAction)logout:(id)sender {
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [app.facebook logout];
 }
 
 @end

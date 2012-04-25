@@ -11,8 +11,11 @@
 #import "Candy.h"
 #import "Location.h"
 #import "Reachability.h"
+#import "Facebook.h"
+#import "LoginViewController.h"
+#import "User.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate, MKMapViewDelegate> {
+@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate, MKMapViewDelegate, FBSessionDelegate> {
     /**
      Delegate retrieves this from backend server when app loads
      Provides security for PUT and POST requests
@@ -43,6 +46,23 @@
     //Checks for a network connection
     //Alert displayed if none found
     Reachability *reachability;
+    
+    //Used for making calls to graph API and logging in
+    Facebook *facebook;
+    
+    //Container for the user-approved permissions of this app
+    NSMutableDictionary *userPermissions;
+    
+    /**
+     ViewController that is displayed modally when the user logs out
+     Handles login
+     **/
+    LoginViewController *loginView;
+    
+    /**
+     Contains information about the current user, like name, picture, id, etc
+     **/
+    User *user;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -54,6 +74,9 @@
 @property (nonatomic, assign) BOOL isLocating;
 @property (nonatomic, strong) CLLocation *bestLocation;
 @property (nonatomic, strong) Reachability *reachability;
+@property (nonatomic, strong) Facebook *facebook;
+@property (nonatomic, strong) NSMutableDictionary *userPermissions;
+@property (nonatomic, strong) User *user;
 
 - (BOOL) writeToHistoryPlist:(Candy *)candy;
 - (NSMutableArray *) readHistoryPlist;

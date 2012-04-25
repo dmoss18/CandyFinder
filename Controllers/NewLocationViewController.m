@@ -11,7 +11,7 @@
 #import "Candy.h"
 #import "Location.h"
 #import "AppDelegate.h"
-#import "SBJson.h"
+#import "JSON.h"
 #import "globals.h"
 #import "Web.h"
 #import "LocationPoster.h"

@@ -7,7 +7,7 @@
 //
 
 #import "TagCandyViewController.h"
-#import "SBJson.h"
+#import "JSON.h"
 #import "MapViewController.h"
 #import "NewLocationViewController.h"
 #import "Candy.h"
@@ -18,6 +18,7 @@
 #import "LocationPoster.h"
 #import "NewAnnotation.h"
 #import "FlurryAnalytics.h"
+#import "FBDataGetter.h"
 
 @implementation TagCandyViewController
 
@@ -384,6 +385,21 @@
             Candy *c = [listContent objectAtIndex:[[self.tableView  indexPathForSelectedRow] row]];
             
             [[LocationPoster sharedLocationPoster] postAnnotationForCandy:c];
+            
+            //Posting to the feed will look like this:
+            //538985750/feed?app_id=158944047567520&   link=http://developers.facebook.com/docs/reference/dialogs/&   picture=http://fbrell.com/f8.jpg&   name=Facebook%20Dialogs&   caption=Reference%20Documentation&   description=Using%20Dialogs%20to%20interact%20with%20users.
+            //The name becomes a link with "link"'s url
+            //Caption is the text
+            //Icon is displayed in the wall post
+            //Picture is something I don't know
+            //Description seems to be useless
+            
+            /*AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"this is a test", @"name", @"caption here", @"caption", @"description here", @"decription", @"http://candyfinder.net", @"link", nil];
+            [app.facebook requestWithGraphPath:@"me/feed"  
+                                 andParams:params  
+                             andHttpMethod:@"POST" 
+                               andDelegate:[FBDataGetter sharedFBDataGetter]];*/
             
             NSString *candyName = [NSString stringWithFormat:@"%@ %@", c.title, c.subtitle];
             [FlurryAnalytics logEvent:CANDIES_TAGGED withParameters:[NSDictionary dictionaryWithObject:candyName forKey:@"name"]];

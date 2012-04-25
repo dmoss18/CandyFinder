@@ -8,7 +8,7 @@
 
 #import "Geocoder.h"
 #import "SynthesizeSingleton.h"
-#import "SBJson.h"
+#import "JSON.h"
 #import "globals.h"
 #import "AppDelegate.h"
 

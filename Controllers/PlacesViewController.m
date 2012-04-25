@@ -10,7 +10,7 @@
 #import "Location.h"
 #import "AppDelegate.h"
 #import "globals.h"
-#import "SBJson.h"
+#import "JSON.h"
 #import "LocationPoster.h"
 #import "FlurryAnalytics.h"
 

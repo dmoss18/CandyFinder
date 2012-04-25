@@ -19,10 +19,12 @@
     
 }
 
-@property (nonatomic, strong) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) IBOutlet UIButton *rateButton;
+@property (nonatomic, strong) IBOutlet UIImageView *profilePic;
+@property (nonatomic, strong) IBOutlet UILabel *nameLabel;
 
 - (void) updateBadgeDisplay:(NSString *)text;
 - (IBAction)rateCandyfinder:(id)sender;
+- (IBAction)logout:(id)sender;
 
 @end

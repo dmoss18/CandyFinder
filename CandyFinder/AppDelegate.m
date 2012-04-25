@@ -15,11 +15,16 @@
 #import "ReachabilityAppDelegate.h"
 #import "Appirater.h"
 #import "InfoViewController.h"
+#import "Facebook.h"
+#import "LoginViewController.h"
+#import "FBDataGetter.h"
 
 @implementation AppDelegate
 
+NSString	*kAppID	= @"158944047567520";
+
 @synthesize window = _window;
-@synthesize authenticity_token, currentCandy, currentLocation, locationManager, motionManager, isLocating, bestLocation, reachability;
+@synthesize authenticity_token, currentCandy, currentLocation, locationManager, motionManager, isLocating, bestLocation, reachability, facebook, userPermissions, user;
 
 - (void) doStuff {
     NSLog(@"do stuff");
@@ -31,6 +36,8 @@
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Top Bar Blank.png"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTintColor:DARK_PINK];
     [[UISearchBar appearance] setTintColor:DARK_PINK];
+    
+    
     
     //Begin checking network connectivity and handle a change of connectivity
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
@@ -55,9 +62,13 @@
         NSLog(@"cell"); 
     }
     
+    
+    
     //Begin running Flury Analytics
     [FlurryAnalytics startSession:FLURRY_API_KEY];
     [FlurryAnalytics setUserID:[[UIDevice currentDevice] uniqueDeviceIdentifier]];
+    
+    
     
     //Start up location manager and motion manager to get user's location
     motionManager = [[CMMotionManager alloc] init];
@@ -82,6 +93,21 @@
     
     //Start Appirater to see when to display the info badge for the user to rate this app
     [Appirater appLaunched:YES];
+    
+    
+    
+    //Instantiate the facebook member
+    facebook = [[Facebook alloc] initWithAppId:kAppID andDelegate:self];
+    
+    self.user = nil;
+    
+    //Check for previous facebook authentication information
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"] 
+        && [defaults objectForKey:@"FBExpirationDateKey"]) {
+        facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+        facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    }
     
     return YES;
 }
@@ -123,6 +149,9 @@
     //Call server to track use
     [[Web sharedWeb] recordAppHit];
     
+    //Refresh the access token
+    [[self facebook] extendAccessTokenIfNeeded];
+    
     //Get Authenticity Token
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:@"http://candyfinder.net"]];
@@ -135,6 +164,22 @@
     [locationManager startUpdatingLocation];
     isLocating = YES;
     [self performSelector:@selector(checkLocationManager:) withObject:nil afterDelay:UPDATE_INTERVAL];
+    
+    
+    
+    if (![facebook isSessionValid]) {
+        UITabBarController *tabController = (UITabBarController*)self.window.rootViewController;
+        loginView = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        //[tabController performSegueWithIdentifier:@"displayLogin" sender:tabController];
+        [tabController presentModalViewController:loginView animated:NO];
+    } else {
+        //This means we have a valid session
+        //but we might need to re-get the user info since we aren't saving that
+        //data in the user defaults
+        if(!user) {
+            [[FBDataGetter sharedFBDataGetter] getMeInfo];
+        }
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -145,6 +190,11 @@
      See also applicationDidEnterBackground:.
      */
 }
+
+
+
+
+
 
 #pragma mark - Location Management
 - (void)checkLocationManager:(id)sender {
@@ -207,6 +257,11 @@
     return NO;
 }
 
+
+
+
+
+
 #pragma mark - Location manager delegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     if ([self isBetterLocation:newLocation]){
@@ -222,7 +277,12 @@
     }
 }
 
-#pragma mark NSURLConnection Request section
+
+
+
+
+
+#pragma mark - NSURLConnection Request section
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
 	if ([response respondsToSelector:@selector(allHeaderFields)]) {
@@ -237,6 +297,11 @@
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 }
+
+
+
+
+
 
 #pragma mark - History plist
 - (BOOL) writeToHistoryPlist:(Candy *)candy {
@@ -286,7 +351,7 @@
 }
 
 - (NSMutableArray *) readHistoryPlist {
-    NSPropertyListFormat *format;
+    NSPropertyListFormat format;
     NSString *errorDesc = nil;
     
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
@@ -321,6 +386,11 @@
     return [Candy unserialize:temp];
 }
 
+
+
+
+
+
 #pragma mark - Reachability helper
 - (void) handleNetworkChange:(NSNotification *)notice
 {
@@ -340,6 +410,11 @@
     else if (remoteHostStatus == ReachableViaWWAN) {NSLog(@"cell"); }
 }
 
+
+
+
+
+
 #pragma mark - update badge display
 - (void)incrementBadgeDisplayForInfo {
     UITabBarController *tabController = (UITabBarController*)self.window.rootViewController;
@@ -351,6 +426,89 @@
     } else {
         [infoController.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%i", badgeNumber - 1]];
     }
+}
+
+
+
+
+
+
+#pragma mark - FBSessionDelegate Protocol
+
+-(void)storeAuthData:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
+    NSLog(@"token extended");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:accessToken forKey:@"FBAccessTokenKey"];
+    [defaults setObject:expiresAt forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+}
+
+/**
+ * Called when the user has logged in successfully.
+ */
+- (void)fbDidLogin {
+    //Gets the user info in a background thread and sets AppDelegate.user
+    [[FBDataGetter sharedFBDataGetter] getMeInfo];
+    
+    [self storeAuthData:[facebook accessToken] expiresAt:[facebook expirationDate]];
+    
+    //Dismiss the login view controller here
+    loginView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [loginView dismissModalViewControllerAnimated:YES];
+    loginView = nil;
+}
+
+-(void)fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
+    [self storeAuthData:accessToken expiresAt:expiresAt];
+}
+
+/**
+ * Called when the user canceled the authorization dialog.
+ */
+-(void)fbDidNotLogin:(BOOL)cancelled {
+    //[pendingApiCallsController userDidNotGrantPermission];
+}
+
+/**
+ * Called when the request logout has succeeded.
+ */
+- (void)fbDidLogout {
+    //pendingApiCallsController = nil;
+    
+    // Remove saved authorization information if it exists and it is
+    // ok to clear it (logout, session invalid, app unauthorized)
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"FBAccessTokenKey"];
+    [defaults removeObjectForKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+    
+    UITabBarController *tabController = (UITabBarController*)self.window.rootViewController;
+    loginView = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    loginView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [tabController presentModalViewController:loginView animated:YES];
+}
+
+/**
+ * Called when the session has expired.
+ */
+- (void)fbSessionInvalidated {
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"Auth Exception"
+                              message:@"Your session has expired."
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil,
+                              nil];
+    [alertView show];
+    [self fbDidLogout];
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [self.facebook handleOpenURL:url];
+}
+
+- (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [facebook handleOpenURL:url];
 }
 
 
