@@ -67,7 +67,7 @@
 
 //Confirmation action sheet displayed after user selects a candy to tag
 //If they click ok, POST is sent to server to create the annotation
-- (IBAction)displayActionSheet:(id)sender;
+- (IBAction)displayActionSheet:(NSIndexPath *)indexPath;
 
 //Deprecated.  We are no longer using this.
 - (IBAction)segmentSwitch:(id)sender;

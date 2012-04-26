@@ -18,6 +18,10 @@
 #import "Facebook.h"
 #import "LoginViewController.h"
 #import "FBDataGetter.h"
+#import "ResultsViewController.h"
+#import "PlacesViewController.h"
+#import "TagCandyViewController.h"
+#import "MapViewController.h"
 
 @implementation AppDelegate
 
@@ -153,13 +157,7 @@ NSString	*kAppID	= @"158944047567520";
     [[self facebook] extendAccessTokenIfNeeded];
     
     //Get Authenticity Token
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://candyfinder.net"]];
-    [request setHTTPMethod:@"GET"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-    //Capturing server response
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [self performSelectorInBackground:@selector(getCandyfinderAuthenticityToken) withObject:nil];
     
     [locationManager startUpdatingLocation];
     isLocating = YES;
@@ -415,7 +413,7 @@ NSString	*kAppID	= @"158944047567520";
 
 
 
-#pragma mark - update badge display
+#pragma mark - badge and authenticity token
 - (void)incrementBadgeDisplayForInfo {
     UITabBarController *tabController = (UITabBarController*)self.window.rootViewController;
     InfoViewController *infoController = (InfoViewController *)[tabController.customizableViewControllers objectAtIndex:4];
@@ -426,6 +424,16 @@ NSString	*kAppID	= @"158944047567520";
     } else {
         [infoController.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%i", badgeNumber - 1]];
     }
+}
+
+- (void)getCandyfinderAuthenticityToken {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://candyfinder.net"]];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 
@@ -486,6 +494,20 @@ NSString	*kAppID	= @"158944047567520";
     loginView = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     loginView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [tabController presentModalViewController:loginView animated:YES];
+    
+    self.user = nil;
+    self.currentCandy = nil;
+    self.currentLocation = nil;
+    self.bestLocation = nil;
+    
+    //Destroy any objects retained by the view controllers to free up memory
+    NSArray *viewCons = tabController.viewControllers;
+    
+    [((ResultsViewController *)[[(UINavigationController *)[viewCons objectAtIndex:0] viewControllers] objectAtIndex:0]) didLogout];
+    [(PlacesViewController *)[[((UINavigationController *)[viewCons objectAtIndex:1]) viewControllers] objectAtIndex:0] didLogout];
+    [((MapViewController *)[[((UINavigationController *)[viewCons objectAtIndex:2]) viewControllers] objectAtIndex:0]) didLogout];
+    [tabController setSelectedIndex:0];
+    
 }
 
 /**

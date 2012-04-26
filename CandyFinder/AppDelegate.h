@@ -86,5 +86,6 @@
 - (void)refreshUserLocation:(id)sender; //Used to turn locationManger on and update user's location
                                         //Turns on every minute after locationManager gets switched off
 - (void)incrementBadgeDisplayForInfo;
+- (void)getCandyfinderAuthenticityToken;
 
 @end

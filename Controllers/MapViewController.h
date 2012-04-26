@@ -91,5 +91,6 @@
 - (IBAction)dismissAnnotationsForCandy:(id)sender;
 - (IBAction)searchButtonTapped:(id)sender;
 - (void)dismissSearchBar;
+- (void)didLogout;
 
 @end

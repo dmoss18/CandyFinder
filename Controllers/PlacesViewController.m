@@ -29,6 +29,8 @@
 
 - (void)didReceiveMemoryWarning
 {
+    NSLog(@"placesview received memory warning");
+    
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
@@ -82,7 +84,9 @@
 {
     [super viewWillAppear:animated];
     
-    [self.searchDisplayController.searchBar setBackgroundImage:[UIImage imageNamed:@"background_find_bot.png"]];
+    if(self.searchDisplayController) {
+        [self.searchDisplayController.searchBar setBackgroundImage:[UIImage imageNamed:@"background_find_bot.png"]];
+    }
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"background_AddHeader.png"] forBarMetrics:UIBarMetricsDefault];
     
@@ -326,6 +330,8 @@
     
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
+    responseData = [NSMutableData data];
+    
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
     
     if([responseString length] > 0){
@@ -417,6 +423,15 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [[NSURLConnection alloc] initWithRequest:request delegate:self];
     }
+}
+
+#pragma mark - didLogout
+- (void)didLogout {
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    self.listContent = nil;
+    self.filteredListContent = nil;
+    responseData = [NSMutableData data];
+    [self.tableView reloadData];
 }
 
 @end

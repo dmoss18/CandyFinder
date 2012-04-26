@@ -93,11 +93,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "366"
-         endingLineNumber = "366"
+         startingLineNumber = "364"
+         endingLineNumber = "364"
          landmarkName = "-readHistoryPlist"
          landmarkType = "5">
       </FileBreakpoint>
@@ -107,11 +107,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "288"
-         endingLineNumber = "288"
+         startingLineNumber = "286"
+         endingLineNumber = "286"
          landmarkName = "-connection:didReceiveResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -121,11 +121,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "337"
-         endingLineNumber = "337"
+         startingLineNumber = "335"
+         endingLineNumber = "335"
          landmarkName = "-writeToHistoryPlist:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -203,11 +203,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "379"
-         endingLineNumber = "379"
+         startingLineNumber = "377"
+         endingLineNumber = "377"
          landmarkName = "-readHistoryPlist"
          landmarkType = "5">
       </FileBreakpoint>
@@ -217,11 +217,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357079137.280906"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "43"
-         endingLineNumber = "43"
+         startingLineNumber = "47"
+         endingLineNumber = "47"
          landmarkName = "-application:didFinishLaunchingWithOptions:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -231,11 +231,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357079137.280906"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "51"
-         endingLineNumber = "51"
+         startingLineNumber = "55"
+         endingLineNumber = "55"
          landmarkName = "-application:didFinishLaunchingWithOptions:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -245,39 +245,39 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357079137.280906"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "60"
-         endingLineNumber = "60"
-         landmarkName = "-application:didFinishLaunchingWithOptions:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357079137.280906"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "63"
-         endingLineNumber = "63"
-         landmarkName = "-application:didFinishLaunchingWithOptions:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357079137.280906"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "64"
          endingLineNumber = "64"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "CandyFinder/AppDelegate.m"
+         timestampString = "357168648.298911"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "CandyFinder/AppDelegate.m"
+         timestampString = "357168648.298911"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "68"
+         endingLineNumber = "68"
          landmarkName = "-application:didFinishLaunchingWithOptions:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -707,11 +707,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "139"
-         endingLineNumber = "139"
+         startingLineNumber = "143"
+         endingLineNumber = "143"
          landmarkName = "-applicationWillEnterForeground:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -777,11 +777,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "289"
-         endingLineNumber = "289"
+         startingLineNumber = "287"
+         endingLineNumber = "287"
          landmarkName = "-connection:didReceiveResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1136,11 +1136,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/AnnotationDetails.m"
-         timestampString = "355865759.606838"
+         timestampString = "357153045.826228"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "175"
-         endingLineNumber = "175"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1149,11 +1149,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "327"
-         endingLineNumber = "327"
+         startingLineNumber = "325"
+         endingLineNumber = "325"
          landmarkName = "-writeToHistoryPlist:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1162,11 +1162,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "338"
-         endingLineNumber = "338"
+         startingLineNumber = "336"
+         endingLineNumber = "336"
          landmarkName = "-writeToHistoryPlist:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1175,11 +1175,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "292"
-         endingLineNumber = "292"
+         startingLineNumber = "290"
+         endingLineNumber = "290"
          landmarkName = "-connection:didReceiveResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1188,11 +1188,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356045426.921394"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "364"
-         endingLineNumber = "364"
+         startingLineNumber = "369"
+         endingLineNumber = "369"
          landmarkName = "-connectionDidFinishLoading:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1201,11 +1201,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356044813.793055"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "159"
-         endingLineNumber = "159"
+         startingLineNumber = "164"
+         endingLineNumber = "164"
          landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1214,11 +1214,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "391"
-         endingLineNumber = "391"
+         startingLineNumber = "389"
+         endingLineNumber = "389"
          landmarkName = "@implementation AppDelegate"
          landmarkType = "3">
       </FileBreakpoint>
@@ -1266,11 +1266,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356126828.427439"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "362"
-         endingLineNumber = "362"
+         startingLineNumber = "367"
+         endingLineNumber = "367"
          landmarkName = "-connectionDidFinishLoading:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1279,11 +1279,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356225249.350632"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "387"
-         endingLineNumber = "387"
+         startingLineNumber = "394"
+         endingLineNumber = "394"
          landmarkName = "-connectionDidFinishLoading:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1292,11 +1292,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356225249.350632"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "378"
-         endingLineNumber = "378"
+         startingLineNumber = "385"
+         endingLineNumber = "385"
          landmarkName = "-connectionDidFinishLoading:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1305,11 +1305,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356222265.664743"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "361"
-         endingLineNumber = "361"
+         startingLineNumber = "366"
+         endingLineNumber = "366"
          landmarkName = "-connectionDidFinishLoading:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1318,11 +1318,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356222266.481459"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "360"
-         endingLineNumber = "360"
+         startingLineNumber = "365"
+         endingLineNumber = "365"
          landmarkName = "-connectionDidFinishLoading:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1331,11 +1331,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356222640.178492"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "149"
-         endingLineNumber = "149"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
          landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1344,11 +1344,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356297554.472197"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "300"
-         endingLineNumber = "300"
+         startingLineNumber = "305"
+         endingLineNumber = "305"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1357,11 +1357,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "335"
-         endingLineNumber = "335"
+         startingLineNumber = "333"
+         endingLineNumber = "333"
          landmarkName = "-writeToHistoryPlist:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1383,11 +1383,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356379799.294417"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "415"
-         endingLineNumber = "415"
+         startingLineNumber = "422"
+         endingLineNumber = "422"
          landmarkName = "-searchDisplayController:shouldReloadTableForSearchString:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1396,11 +1396,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356379804.086265"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "430"
-         endingLineNumber = "430"
+         startingLineNumber = "437"
+         endingLineNumber = "437"
          landmarkName = "-searchBarSearchButtonClicked:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1409,11 +1409,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356379937.838325"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "147"
-         endingLineNumber = "147"
+         startingLineNumber = "152"
+         endingLineNumber = "152"
          landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1422,11 +1422,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356380873.414312"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "365"
-         endingLineNumber = "365"
+         startingLineNumber = "372"
+         endingLineNumber = "372"
          landmarkName = "-connectionDidFinishLoading:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1435,11 +1435,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/TagCandyViewController.m"
-         timestampString = "357084719.931198"
+         timestampString = "357162786.288663"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "328"
-         endingLineNumber = "328"
+         startingLineNumber = "332"
+         endingLineNumber = "332"
          landmarkName = "-connectionDidFinishLoading:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1448,11 +1448,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/TagCandyViewController.m"
-         timestampString = "357085075.582771"
+         timestampString = "357162786.288663"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "422"
-         endingLineNumber = "422"
+         startingLineNumber = "426"
+         endingLineNumber = "426"
          landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1461,11 +1461,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/TagCandyViewController.m"
-         timestampString = "357084719.931198"
+         timestampString = "357162786.288663"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "322"
-         endingLineNumber = "322"
+         startingLineNumber = "326"
+         endingLineNumber = "326"
          landmarkName = "-connectionDidFinishLoading:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1474,11 +1474,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/ResultsViewController.m"
-         timestampString = "356381324.247609"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "148"
-         endingLineNumber = "148"
+         startingLineNumber = "153"
+         endingLineNumber = "153"
          landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1487,11 +1487,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "439"
-         endingLineNumber = "439"
+         startingLineNumber = "447"
+         endingLineNumber = "447"
          landmarkName = "-storeAuthData:expiresAt:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1500,11 +1500,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357080876.205268"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "454"
-         endingLineNumber = "454"
+         startingLineNumber = "462"
+         endingLineNumber = "462"
          landmarkName = "-fbDidLogin"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1513,11 +1513,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357082234.478457"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "462"
-         endingLineNumber = "462"
+         startingLineNumber = "470"
+         endingLineNumber = "470"
          landmarkName = "-fbDidExtendToken:expiresAt:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1526,11 +1526,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357082234.478457"
+         timestampString = "357168648.298911"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "480"
-         endingLineNumber = "480"
+         startingLineNumber = "488"
+         endingLineNumber = "488"
          landmarkName = "-fbDidLogout"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1539,11 +1539,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CandyFinder/AppDelegate.m"
-         timestampString = "357082234.478457"
+         timestampString = "357169805.979208"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "495"
-         endingLineNumber = "495"
+         startingLineNumber = "517"
+         endingLineNumber = "517"
          landmarkName = "-fbSessionInvalidated"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1578,12 +1578,311 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Controllers/TagCandyViewController.m"
-         timestampString = "357085075.582771"
+         timestampString = "357162786.288663"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "396"
-         endingLineNumber = "396"
+         startingLineNumber = "400"
+         endingLineNumber = "400"
          landmarkName = "-actionSheet:clickedButtonAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CandyFinder/AppDelegate.m"
+         timestampString = "357168648.298911"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "40"
+         endingLineNumber = "40"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/LoginViewController.m"
+         timestampString = "357091175.292796"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "56"
+         endingLineNumber = "56"
+         landmarkName = "-login:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CandyFinder/AppDelegate.m"
+         timestampString = "357168648.298911"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
+         landmarkName = "-applicationDidBecomeActive:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CandyFinder/AppDelegate.m"
+         timestampString = "357168648.298911"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "459"
+         endingLineNumber = "459"
+         landmarkName = "-fbDidLogin"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/ResultsViewController.m"
+         timestampString = "357153045.826228"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/ResultsViewController.m"
+         timestampString = "357168648.298911"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "84"
+         endingLineNumber = "84"
+         landmarkName = "-viewWillAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/ResultsViewController.m"
+         timestampString = "357168648.298911"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "93"
+         endingLineNumber = "93"
+         landmarkName = "-viewDidAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/MapViewController.m"
+         timestampString = "357168648.298911"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "469"
+         endingLineNumber = "469"
+         landmarkName = "-connectionDidFinishLoading:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/ProfileViewController.m"
+         timestampString = "357172044.699016"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "103"
+         endingLineNumber = "103"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/TagCandyViewController.m"
+         timestampString = "357162762.783928"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "72"
+         endingLineNumber = "72"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/ResultsViewController.m"
+         timestampString = "357162767.216569"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "65"
+         endingLineNumber = "65"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/PlacesViewController.m"
+         timestampString = "357162779.71522"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
+         landmarkName = "-viewWillAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/PlacesViewController.m"
+         timestampString = "357163301.73995"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "78"
+         endingLineNumber = "78"
+         landmarkName = "-viewDidUnload"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/ResultsViewController.m"
+         timestampString = "357163340.08019"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "74"
+         endingLineNumber = "74"
+         landmarkName = "-viewDidUnload"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CandyFinder/AppDelegate.m"
+         timestampString = "357168648.298911"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "134"
+         endingLineNumber = "134"
+         landmarkName = "-applicationDidEnterBackground:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/MapViewController.m"
+         timestampString = "357169083.707037"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "575"
+         endingLineNumber = "575"
+         landmarkName = "-didLogout"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/PlacesViewController.m"
+         timestampString = "357169091.804735"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "430"
+         endingLineNumber = "430"
+         landmarkName = "-didLogout"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/ResultsViewController.m"
+         timestampString = "357169097.164385"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "511"
+         endingLineNumber = "511"
+         landmarkName = "-didLogout"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/ProfileViewController.m"
+         timestampString = "357172044.699016"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CandyFinder/AppDelegate.m"
+         timestampString = "357170545.966266"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "168"
+         endingLineNumber = "168"
+         landmarkName = "-applicationDidBecomeActive:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CandyFinder/AppDelegate.m"
+         timestampString = "357170589.943533"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/ProfileViewController.m"
+         timestampString = "357172110.94082"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "132"
+         endingLineNumber = "132"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Controllers/ProfileViewController.m"
+         timestampString = "357172257.619317"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "119"
+         endingLineNumber = "119"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

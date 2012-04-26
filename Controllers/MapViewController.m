@@ -28,6 +28,8 @@
 
 - (void)didReceiveMemoryWarning
 {
+    NSLog(@"mapview received memory warning");
+    
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
@@ -462,6 +464,8 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
+    responseData = [NSMutableData data];
+    
 	NSArray *locationInfo = [responseString JSONValue];
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
     
@@ -564,6 +568,18 @@
         [filterBar resignFirstResponder];
     }
     [filterBar setHidden:YES];
+}
+
+#pragma mark - didLogout
+- (void)didLogout {
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    [mapView removeAnnotations:mapView.annotations];
+    
+    isFilteringByCandy = NO;
+    fromAnnotationDetails = NO;
+    isFirstTimeLoading = YES;
+    
+    responseData = [NSMutableData data];
 }
 
 @end

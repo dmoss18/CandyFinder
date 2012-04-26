@@ -93,6 +93,7 @@
 		048882D515362E3400C2D31B /* infoPageBackground_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 048882D415362E3400C2D31B /* infoPageBackground_top.png */; };
 		048882D715362EB800C2D31B /* candies.png in Resources */ = {isa = PBXBuildFile; fileRef = 048882D615362EB800C2D31B /* candies.png */; };
 		048B895E151CF4B80079D6B5 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 048B895D151CF4B80079D6B5 /* libFlurryAnalytics.a */; };
+		04A1308A1549CB0A00EF16AC /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A130881549CB0A00EF16AC /* ProfileViewController.m */; };
 		04C40C20154743AD0047C463 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C40C15154743AD0047C463 /* NSObject+SBJSON.m */; };
 		04C40C21154743AD0047C463 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C40C17154743AD0047C463 /* NSString+SBJSON.m */; };
 		04C40C22154743AD0047C463 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C40C19154743AD0047C463 /* SBJSON.m */; };
@@ -267,6 +268,8 @@
 		048882D615362EB800C2D31B /* candies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = candies.png; sourceTree = "<group>"; };
 		048B895C151CF4B80079D6B5 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
 		048B895D151CF4B80079D6B5 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
+		04A130871549CB0A00EF16AC /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		04A130881549CB0A00EF16AC /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		04C40C13154743AD0047C463 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		04C40C14154743AD0047C463 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		04C40C15154743AD0047C463 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -536,6 +539,8 @@
 				048882AD1536014C00C2D31B /* TagCandyViewController.m */,
 				045B248615485B500087CE58 /* LoginViewController.h */,
 				045B248715485B500087CE58 /* LoginViewController.m */,
+				04A130871549CB0A00EF16AC /* ProfileViewController.h */,
+				04A130881549CB0A00EF16AC /* ProfileViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -989,6 +994,7 @@
 				045B248815485B500087CE58 /* LoginViewController.m in Sources */,
 				045B24AE1548917F0087CE58 /* FBDataGetter.m in Sources */,
 				045B24B1154894B30087CE58 /* User.m in Sources */,
+				04A1308A1549CB0A00EF16AC /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

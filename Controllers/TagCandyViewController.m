@@ -44,6 +44,8 @@
 
 - (void)didReceiveMemoryWarning
 {
+    NSLog(@"tagview received memory warning");
+    
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
@@ -67,7 +69,9 @@
     
     [segment addTarget:self action:@selector(segmentSwitch:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.searchDisplayController.searchBar setBackgroundImage:[UIImage imageNamed:@"background_find_bot.png"]];
+    if(self.searchDisplayController) {
+        [self.searchDisplayController.searchBar setBackgroundImage:[UIImage imageNamed:@"background_find_bot.png"]];
+    }
 }
 
 - (void)viewDidUnload
@@ -226,7 +230,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self displayActionSheet:self];
+    [self displayActionSheet:indexPath];
     
     //Dispatch event
     if(isScanning) {
@@ -367,8 +371,8 @@
 }
 
 #pragma mark - Action Sheet
-- (IBAction)displayActionSheet:(id)sender {
-    Candy *candy = [listContent objectAtIndex:[[self.tableView  indexPathForSelectedRow] row]];
+- (IBAction)displayActionSheet:(NSIndexPath *)indexPath {
+    Candy *candy = [listContent objectAtIndex:[indexPath row]];
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Tag %@ %@ at %@?", candy.title, candy.subtitle, [LocationPoster sharedLocationPoster].currentLocation.name]
                                               delegate:self
                                      cancelButtonTitle:@"Cancel"

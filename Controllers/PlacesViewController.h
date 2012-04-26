@@ -44,5 +44,6 @@
 
 //Begins filtering when the user types text in the search bar
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope;
+- (void)didLogout;
 
 @end

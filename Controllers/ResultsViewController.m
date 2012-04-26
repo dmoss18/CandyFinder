@@ -33,6 +33,8 @@
 
 - (void)didReceiveMemoryWarning
 {
+    NSLog(@"resultsview received memory warning");
+    
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
@@ -60,7 +62,9 @@
     [self.tableView reloadData];
     self.tableView.scrollEnabled = YES;
     
-    [self.searchDisplayController.searchResultsTableView setHidden:NO];
+    if(self.searchDisplayController) {
+        [self.searchDisplayController.searchResultsTableView setHidden:NO];
+    }
     
     //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_AddBody_half.png"]];
 }
@@ -72,6 +76,7 @@
     // e.g. self.myOutlet = nil;
     
     self.responseData = nil;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -363,6 +368,8 @@
     
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
+    responseData = [NSMutableData data];
+    
     if(![responseString isEqualToString:@"null"]) {
         NSDictionary *candyInfo = [responseString JSONValue];
         
@@ -497,6 +504,14 @@
         default:
             break;
     }
+}
+
+#pragma mark - didLogout
+- (void)didLogout {
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    self.listContent = nil;
+    responseData = [NSMutableData data];
+    [self.tableView reloadData];
 }
 
 

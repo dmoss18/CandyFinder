@@ -58,6 +58,7 @@
         [[delegate facebook] authorize:permissions];
     } else {
         //dismiss self cuz the user is logged in
+        [self dismissModalViewControllerAnimated:YES];
     }
 }
 

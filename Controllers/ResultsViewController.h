@@ -56,4 +56,6 @@
 //This is deprecated.  We will be removing this in the near future as we no longer use it.
 - (IBAction)displayActionSheet:(id)sender;
 
+- (void)didLogout;
+
 @end
