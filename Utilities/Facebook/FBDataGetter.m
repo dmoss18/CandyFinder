@@ -53,7 +53,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(FBDataGetter);
     }
     // This callback can be a result of getting the user's basic
     // information or getting the user's permissions.
-    if ([result objectForKey:@"name"]) {
+    if ([result objectForKey:@"first_name"]) {
         // If basic information callback, set the UI objects to
         // display this.
         
@@ -87,7 +87,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(FBDataGetter);
         
         User *user = [[User alloc] init];
         user.pic = imgThumb;
-        user.name = [result objectForKey:@"name"];
+        user.first_name = [result objectForKey:@"first_name"];
+        user.last_name = [result objectForKey:@"last_name"];
         user.fbid = [result objectForKey:@"uid"];
         
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -123,7 +124,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(FBDataGetter);
 
 - (void) getMeInfo {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   @"SELECT uid, name, pic FROM user WHERE uid = me()", @"query",
+                                   @"SELECT uid, first_name, last_name, pic FROM user WHERE uid = me()", @"query",
                                    nil];
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [[delegate facebook] requestWithMethodName:@"fql.query"

@@ -52,6 +52,10 @@
 #define SEARCH_PARAMETERS           @"search[candy_id]=%@&search[device_id]=%@&search[search_term]=%@&authenticity_token=%@"
 #define TAG_PARAMETERS              @"location[lat]=%@&location[lon]=%@&location[name]=%@&location[ext_id]=%@&location[id]=%@&location[ext_reference]=%@&authenticity_token=%@&candy_id=%@&candy_sku=%@&device_id=%@"
 
+//Login, Logout, and Register
+#define LOGIN_PARAMETERS            @"http://www.candyfinder.net/mobile/login?email=%@&password=%@"
+#define LOGOUT_PARAMETERS           @"http://www.candyfinder.net/mobile/logout/%@"
+
 //Google Geocoding
 #define FIND_ADDRESS                @"https://maps.googleapis.com/maps/api/geocode/json?latlng=%@,%@&sensor=true"
 #define FIND_LATLON                 @"https://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true"

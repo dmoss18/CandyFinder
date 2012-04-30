@@ -78,6 +78,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LocationPoster);
                                     cachePolicy:NSURLRequestUseProtocolCachePolicy
                                     timeoutInterval:10];
     [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     NSURLResponse *response;
     
@@ -94,6 +95,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LocationPoster);
                                     cachePolicy:NSURLRequestUseProtocolCachePolicy
                                     timeoutInterval:10];
     [request setHTTPMethod:@"PUT"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     NSURLResponse *response;
     

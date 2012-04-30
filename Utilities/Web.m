@@ -76,6 +76,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Web);
                              cachePolicy:NSURLRequestUseProtocolCachePolicy
                              timeoutInterval:10];
     [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     NSURLResponse *response;
     

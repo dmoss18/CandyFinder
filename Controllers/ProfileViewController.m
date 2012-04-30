@@ -103,7 +103,7 @@
     if(indexPath.section == 0) {
         AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         if(app.user) {
-            nameCell.textLabel.text = app.user.name;
+            nameCell.textLabel.text = [NSString stringWithFormat:@"%@ %@", app.user.first_name, app.user.last_name];
             nameCell.imageView.image = app.user.pic;
             nameCell.detailTextLabel.text = @"Level 1: Candy Craver";
         } else {

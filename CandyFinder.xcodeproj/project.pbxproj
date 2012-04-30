@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04190E09154D0753004AD3F6 /* NoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 04190E08154D0753004AD3F6 /* NoAnimationSegue.m */; };
+		04190E0D154D0BB0004AD3F6 /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04190E0C154D0BB0004AD3F6 /* UserLoginViewController.m */; };
+		04190E10154D0BBE004AD3F6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04190E0F154D0BBE004AD3F6 /* SignUpViewController.m */; };
 		044A9ACE151E596600409A7F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044A9ACD151E596600409A7F /* SystemConfiguration.framework */; };
 		045B248815485B500087CE58 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045B248715485B500087CE58 /* LoginViewController.m */; };
 		045B248D154884530087CE58 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045B248C154884530087CE58 /* LoginViewController.xib */; };
@@ -94,6 +97,7 @@
 		048882D715362EB800C2D31B /* candies.png in Resources */ = {isa = PBXBuildFile; fileRef = 048882D615362EB800C2D31B /* candies.png */; };
 		048B895E151CF4B80079D6B5 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 048B895D151CF4B80079D6B5 /* libFlurryAnalytics.a */; };
 		04A1308A1549CB0A00EF16AC /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A130881549CB0A00EF16AC /* ProfileViewController.m */; };
+		04BA60CC154B06B700A1D321 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BA60CB154B06B700A1D321 /* Accounts.framework */; };
 		04C40C20154743AD0047C463 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C40C15154743AD0047C463 /* NSObject+SBJSON.m */; };
 		04C40C21154743AD0047C463 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C40C17154743AD0047C463 /* NSString+SBJSON.m */; };
 		04C40C22154743AD0047C463 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C40C19154743AD0047C463 /* SBJSON.m */; };
@@ -144,6 +148,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04190E07154D0753004AD3F6 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
+		04190E08154D0753004AD3F6 /* NoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAnimationSegue.m; sourceTree = "<group>"; };
+		04190E0B154D0BB0004AD3F6 /* UserLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginViewController.h; sourceTree = "<group>"; };
+		04190E0C154D0BB0004AD3F6 /* UserLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginViewController.m; sourceTree = "<group>"; };
+		04190E0E154D0BBE004AD3F6 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		04190E0F154D0BBE004AD3F6 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		044A9ACD151E596600409A7F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		045B248615485B500087CE58 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		045B248715485B500087CE58 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -270,6 +280,7 @@
 		048B895D151CF4B80079D6B5 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		04A130871549CB0A00EF16AC /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		04A130881549CB0A00EF16AC /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		04BA60CB154B06B700A1D321 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		04C40C13154743AD0047C463 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		04C40C14154743AD0047C463 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		04C40C15154743AD0047C463 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -354,6 +365,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BA60CC154B06B700A1D321 /* Accounts.framework in Frameworks */,
 				046DFCA8151A52E3007A7DF6 /* CFNetwork.framework in Frameworks */,
 				044A9ACE151E596600409A7F /* SystemConfiguration.framework in Frameworks */,
 				046DFCB2151A5581007A7DF6 /* libsqlite3.0.dylib in Frameworks */,
@@ -541,6 +553,10 @@
 				045B248715485B500087CE58 /* LoginViewController.m */,
 				04A130871549CB0A00EF16AC /* ProfileViewController.h */,
 				04A130881549CB0A00EF16AC /* ProfileViewController.m */,
+				04190E0B154D0BB0004AD3F6 /* UserLoginViewController.h */,
+				04190E0C154D0BB0004AD3F6 /* UserLoginViewController.m */,
+				04190E0E154D0BBE004AD3F6 /* SignUpViewController.h */,
+				04190E0F154D0BBE004AD3F6 /* SignUpViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -557,6 +573,8 @@
 				045B248C154884530087CE58 /* LoginViewController.xib */,
 				045B24AF154894B30087CE58 /* User.h */,
 				045B24B0154894B30087CE58 /* User.m */,
+				04190E07154D0753004AD3F6 /* NoAnimationSegue.h */,
+				04190E08154D0753004AD3F6 /* NoAnimationSegue.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -635,6 +653,7 @@
 		04D47E2C1519B41C002E0F29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04BA60CB154B06B700A1D321 /* Accounts.framework */,
 				044A9ACD151E596600409A7F /* SystemConfiguration.framework */,
 				046DFCA7151A52E3007A7DF6 /* CFNetwork.framework */,
 				046DFCB1151A5581007A7DF6 /* libsqlite3.0.dylib */,
@@ -995,6 +1014,9 @@
 				045B24AE1548917F0087CE58 /* FBDataGetter.m in Sources */,
 				045B24B1154894B30087CE58 /* User.m in Sources */,
 				04A1308A1549CB0A00EF16AC /* ProfileViewController.m in Sources */,
+				04190E09154D0753004AD3F6 /* NoAnimationSegue.m in Sources */,
+				04190E0D154D0BB0004AD3F6 /* UserLoginViewController.m in Sources */,
+				04190E10154D0BBE004AD3F6 /* SignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

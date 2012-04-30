@@ -17,7 +17,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewCandyViewController : UIViewController < ZBarReaderDelegate, UITextFieldDelegate, UIActionSheetDelegate > {
+@interface NewCandyViewController : UIViewController < ZBarReaderDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIAlertViewDelegate > {
     //Container for the barcode sku/upc
     NSString *sku;
     
@@ -57,5 +57,8 @@
 //Displays confirmation form
 //If user clicks ok, sends a request to add a candy then dismisses self
 - (IBAction)displayActionSheet:(id)sender;
+
+- (IBAction)tempSave:(id)sender;
+
 
 @end

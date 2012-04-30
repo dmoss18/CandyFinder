@@ -58,7 +58,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.nameLabel.text = app.user.name;
+    self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", app.user.first_name, app.user.last_name];
     self.profilePic.image = app.user.pic;
 }
 

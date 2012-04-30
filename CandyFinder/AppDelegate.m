@@ -157,7 +157,8 @@ NSString	*kAppID	= @"158944047567520";
     [[self facebook] extendAccessTokenIfNeeded];
     
     //Get Authenticity Token
-    [self performSelectorInBackground:@selector(getCandyfinderAuthenticityToken) withObject:nil];
+    //[self performSelectorInBackground:@selector(getCandyfinderAuthenticityToken) withObject:nil];
+    [self getCandyfinderAuthenticityToken];
     
     [locationManager startUpdatingLocation];
     isLocating = YES;
@@ -167,9 +168,9 @@ NSString	*kAppID	= @"158944047567520";
     
     if (![facebook isSessionValid]) {
         UITabBarController *tabController = (UITabBarController*)self.window.rootViewController;
-        loginView = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-        //[tabController performSegueWithIdentifier:@"displayLogin" sender:tabController];
-        [tabController presentModalViewController:loginView animated:NO];
+        //loginView = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        [tabController performSegueWithIdentifier:@"displayLogin" sender:tabController];
+        //[tabController presentModalViewController:loginView animated:NO];
     } else {
         //This means we have a valid session
         //but we might need to re-get the user info since we aren't saving that
@@ -448,6 +449,12 @@ NSString	*kAppID	= @"158944047567520";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:accessToken forKey:@"FBAccessTokenKey"];
     [defaults setObject:expiresAt forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+}
+
+-(void)storeUserAuthData {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.user.authentication_token forKey:@"UserAuthenticationTokenKey"];
     [defaults synchronize];
 }
 
