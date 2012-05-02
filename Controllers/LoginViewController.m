@@ -76,4 +76,8 @@
     [[delegate facebook] logout];
 }
 
+- (IBAction)continueWithoutLoggingIn:(id)sender {
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
 @end

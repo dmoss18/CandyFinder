@@ -35,8 +35,8 @@
 -(NSData *)getPostDataFromString:(NSString *)body;
 -(void)recordAppHit;
 -(void)postRequestInBackground:(NSString *)url;
+-(void)getUserInfo:(NSString *)authentication_token;
 
 + (Web *)sharedWeb;
-
 
 @end

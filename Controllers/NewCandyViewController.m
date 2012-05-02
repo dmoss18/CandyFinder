@@ -53,6 +53,8 @@
     
     self.fromSegue = YES;
     
+    isScanning = NO;
+    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_AddBody_half.png"]];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Top Bar Blank.png"] forBarMetrics:UIBarMetricsDefault];
@@ -92,6 +94,8 @@
 #pragma mark - Scan delegate
 - (IBAction) scanButtonTapped
 {
+    isScanning = YES;
+    
     // ADD: present a barcode reader that scans from the camera feed
     ZBarReaderViewController *reader = [ZBarReaderViewController new];
     reader.readerDelegate = self;
@@ -113,43 +117,67 @@
 - (void) imagePickerController: (UIImagePickerController*) reader
  didFinishPickingMediaWithInfo: (NSDictionary*) info
 {
-    // ADD: get the decode results
-    id<NSFastEnumeration> results =
-    [info objectForKey: ZBarReaderControllerResults];
-    ZBarSymbol *symbol = nil;
-    for(symbol in results)
-        // EXAMPLE: just grab the first barcode
-        break;
-    
-    if(symbol) {
-        // EXAMPLE: do something useful with the barcode data
-        self.sku = [NSString stringWithFormat:@"%@", symbol.data];
-        skuTextField.text = sku;
+    if(isScanning) {
+        // ADD: get the decode results
+        id<NSFastEnumeration> results =
+        [info objectForKey: ZBarReaderControllerResults];
+        ZBarSymbol *symbol = nil;
+        for(symbol in results)
+            // EXAMPLE: just grab the first barcode
+            break;
         
-        imageView.image = [info objectForKey: UIImagePickerControllerOriginalImage];
-        
-        //Using NSURL send the message
-        responseData = [NSMutableData data];
-        
-        //So the url will be http://candyfinder.net/search/sku/123456789012
-        NSString *url = [NSString stringWithFormat:SEARCH_SKU, symbol.data];
-        url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        [request setHTTPMethod:@"POST"];
-        
-        [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        
-        // ADD: dismiss the controller (NB dismiss from the *reader*!)
-        [reader dismissModalViewControllerAnimated: YES];
+        if(symbol) {
+            // EXAMPLE: do something useful with the barcode data
+            self.sku = [NSString stringWithFormat:@"%@", symbol.data];
+            skuTextField.text = sku;
+            
+            //imageView.image = [info objectForKey: UIImagePickerControllerOriginalImage];
+            
+            //Using NSURL send the message
+            responseData = [NSMutableData data];
+            
+            //So the url will be http://candyfinder.net/search/sku/123456789012
+            NSString *url = [NSString stringWithFormat:SEARCH_SKU, symbol.data];
+            url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+            [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+            [request setHTTPMethod:@"POST"];
+            
+            [[NSURLConnection alloc] initWithRequest:request delegate:self];
+            
+            // ADD: dismiss the controller (NB dismiss from the *reader*!)
+            [reader dismissModalViewControllerAnimated: YES];
+            
+            isScanning = NO;
+        } else {
+            //Display a label on the modal view controller saying "barcode not scanned.  try again"
+        }
     } else {
-        //Display a label on the modal view controller saying "barcode not scanned.  try again"
+        //Not scanning.  User is taking a picture of the candy for us
+        imageView.image = [info valueForKey:UIImagePickerControllerOriginalImage];
+        imageView.tag += 1;//Increment the tag so we know the user has taken a pic
     }
+    
 }
 
 - (void) imagePickerControllerDidCancel:(UIImagePickerController*)picker {
     [picker dismissModalViewControllerAnimated:YES];
     //[self.navigationController popViewControllerAnimated:YES];
+    
+    isScanning = NO;
+}
+
+- (IBAction)displayCamera:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentModalViewController:imagePicker animated:YES];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Camera Available" message:@"Your device doesn't have a camera." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert show];
+    }
 }
 
 #pragma mark - Text Field Delegate
@@ -182,12 +210,13 @@
             //We are attempting to save the candy and got a response
             switch ([[candyInfo objectForKey:@"status"] intValue]) {
                 case CANDY_SAVED:
-                    [self userConfirmedSave];
+                    [self candyDidSave];
                     break;
                 case ERROR: {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unable to Save Candy" message:[candyInfo objectForKey:@"message"] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
                     [alert dismissWithClickedButtonIndex:0 animated:YES];
                     [alert show];
+                    break;
                 }
                     
                 default:
@@ -232,7 +261,7 @@
         if(type && [type length] == 0) {
             save = NO;
             [typeTextField setBackgroundColor:BRIGHT_RED];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a type." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Field" message:@"Please enter a type." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
             [alert dismissWithClickedButtonIndex:0 animated:YES];
             [alert show];
             return;
@@ -240,7 +269,14 @@
         if(type && [brand length] == 0) {
             save = NO;
             [brandTextField setBackgroundColor:BRIGHT_RED];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a brand." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Field" message:@"Please enter a brand." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+            [alert dismissWithClickedButtonIndex:0 animated:YES];
+            [alert show];
+            return;
+        }
+        if(self.imageView.tag == 0) {
+            save = NO;
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Take a Picture" message:@"Would you like to take a picture of the candy?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
             [alert dismissWithClickedButtonIndex:0 animated:YES];
             [alert show];
             return;
@@ -303,7 +339,7 @@
     }
 }
 
-- (void)userConfirmedSave {
+- (void)candyDidSave {
     //This alert appears when a candy is successfully added to our database.
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thank You!" message:@"We will review your entry and approve it shortly." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     [alert dismissWithClickedButtonIndex:0 animated:YES];
@@ -316,9 +352,19 @@
             if([alertView.title isEqualToString:@"Thank You!"]) {
                 //pop to parent view controller
                 [self.navigationController popViewControllerAnimated:YES];
+            }else if ([alertView.title isEqualToString:@"Take a Picture"]) {
+                //User doesn't want to take a picture.  Just save the candy.
+                [self displayActionSheet:self];
+            }
+            break;
+        }
+        case 1: {
+            if([alertView.title isEqualToString:@"Take a Picture"]) {
+                //User does want to take a picture before saving.  
+                //Display camera picker
+                [self displayCamera:self];
             }
         }
-            break;
             
         default:
             break;

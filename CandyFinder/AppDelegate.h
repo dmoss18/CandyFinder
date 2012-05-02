@@ -54,12 +54,6 @@
     NSMutableDictionary *userPermissions;
     
     /**
-     ViewController that is displayed modally when the user logs out
-     Handles login
-     **/
-    LoginViewController *loginView;
-    
-    /**
      Contains information about the current user, like name, picture, id, etc
      **/
     User *user;
@@ -87,5 +81,8 @@
                                         //Turns on every minute after locationManager gets switched off
 - (void)incrementBadgeDisplayForInfo;
 - (void)getCandyfinderAuthenticityToken;
+
+-(void)userDidLogout;
+-(void)userDidLogin;
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ProfileViewController : UITableViewController {
-    
+    int userUpdateCount;
 }
 
 @property (nonatomic, strong) IBOutlet UITableViewCell *nameCell;

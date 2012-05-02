@@ -166,7 +166,9 @@ NSString	*kAppID	= @"158944047567520";
     
     
     
-    if (![facebook isSessionValid]) {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //if (![facebook isSessionValid]) {
+    if (![defaults objectForKey:@"UserAuthenticationTokenKey"]) {
         UITabBarController *tabController = (UITabBarController*)self.window.rootViewController;
         //loginView = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         [tabController performSegueWithIdentifier:@"displayLogin" sender:tabController];
@@ -176,7 +178,8 @@ NSString	*kAppID	= @"158944047567520";
         //but we might need to re-get the user info since we aren't saving that
         //data in the user defaults
         if(!user) {
-            [[FBDataGetter sharedFBDataGetter] getMeInfo];
+            //[[FBDataGetter sharedFBDataGetter] getMeInfo];
+            [[Web sharedWeb] getUserInfo:[defaults objectForKey:@"UserAuthenticationTokenKey"]];
         }
     }
 }
@@ -437,14 +440,39 @@ NSString	*kAppID	= @"158944047567520";
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+- (void) userDidLogout {
+    UITabBarController *tabController = (UITabBarController*)self.window.rootViewController;
+    [tabController performSegueWithIdentifier:@"dissolveToLogin" sender:tabController];
+    
+    //Destroy user auth token
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"UserAuthenticationTokenKey"];
+    [defaults synchronize];
+    
+    self.user = nil;
+    self.currentCandy = nil;
+    self.currentLocation = nil;
+    self.bestLocation = nil;
+    
+    //Destroy any objects retained by the view controllers to free up memory
+    NSArray *viewCons = tabController.viewControllers;
+    
+    [((ResultsViewController *)[[(UINavigationController *)[viewCons objectAtIndex:0] viewControllers] objectAtIndex:0]) didLogout];
+    [(PlacesViewController *)[[((UINavigationController *)[viewCons objectAtIndex:1]) viewControllers] objectAtIndex:0] didLogout];
+    [((MapViewController *)[[((UINavigationController *)[viewCons objectAtIndex:2]) viewControllers] objectAtIndex:0]) didLogout];
+    [tabController setSelectedIndex:0];
+}
 
+- (void)userDidLogin {
+    [self storeUserAuthData:user.authentication_token];
+}
 
 
 
 
 #pragma mark - FBSessionDelegate Protocol
 
--(void)storeAuthData:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
+-(void)storeFBAuthData:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
     NSLog(@"token extended");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:accessToken forKey:@"FBAccessTokenKey"];
@@ -452,9 +480,9 @@ NSString	*kAppID	= @"158944047567520";
     [defaults synchronize];
 }
 
--(void)storeUserAuthData {
+-(void)storeUserAuthData:(NSString *)userAuthenticationToken {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.user.authentication_token forKey:@"UserAuthenticationTokenKey"];
+    [defaults setObject:userAuthenticationToken forKey:@"UserAuthenticationTokenKey"];
     [defaults synchronize];
 }
 
@@ -465,16 +493,11 @@ NSString	*kAppID	= @"158944047567520";
     //Gets the user info in a background thread and sets AppDelegate.user
     [[FBDataGetter sharedFBDataGetter] getMeInfo];
     
-    [self storeAuthData:[facebook accessToken] expiresAt:[facebook expirationDate]];
-    
-    //Dismiss the login view controller here
-    loginView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [loginView dismissModalViewControllerAnimated:YES];
-    loginView = nil;
+    [self storeFBAuthData:[facebook accessToken] expiresAt:[facebook expirationDate]];
 }
 
 -(void)fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
-    [self storeAuthData:accessToken expiresAt:expiresAt];
+    [self storeFBAuthData:accessToken expiresAt:expiresAt];
 }
 
 /**
@@ -496,25 +519,6 @@ NSString	*kAppID	= @"158944047567520";
     [defaults removeObjectForKey:@"FBAccessTokenKey"];
     [defaults removeObjectForKey:@"FBExpirationDateKey"];
     [defaults synchronize];
-    
-    UITabBarController *tabController = (UITabBarController*)self.window.rootViewController;
-    loginView = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    loginView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [tabController presentModalViewController:loginView animated:YES];
-    
-    self.user = nil;
-    self.currentCandy = nil;
-    self.currentLocation = nil;
-    self.bestLocation = nil;
-    
-    //Destroy any objects retained by the view controllers to free up memory
-    NSArray *viewCons = tabController.viewControllers;
-    
-    [((ResultsViewController *)[[(UINavigationController *)[viewCons objectAtIndex:0] viewControllers] objectAtIndex:0]) didLogout];
-    [(PlacesViewController *)[[((UINavigationController *)[viewCons objectAtIndex:1]) viewControllers] objectAtIndex:0] didLogout];
-    [((MapViewController *)[[((UINavigationController *)[viewCons objectAtIndex:2]) viewControllers] objectAtIndex:0]) didLogout];
-    [tabController setSelectedIndex:0];
-    
 }
 
 /**

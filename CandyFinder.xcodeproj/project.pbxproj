@@ -74,7 +74,6 @@
 		048882921536009600C2D31B /* Web.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488828E1536009600C2D31B /* Web.m */; };
 		048882AE1536014C00C2D31B /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048882951536014C00C2D31B /* AddressViewController.m */; };
 		048882AF1536014C00C2D31B /* AnnotationDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 048882971536014C00C2D31B /* AnnotationDetails.m */; };
-		048882B01536014C00C2D31B /* AnnotationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048882991536014C00C2D31B /* AnnotationDetailsViewController.m */; };
 		048882B11536014C00C2D31B /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488829B1536014C00C2D31B /* HistoryViewController.m */; };
 		048882B21536014C00C2D31B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488829D1536014C00C2D31B /* HomeViewController.m */; };
 		048882B31536014C00C2D31B /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488829F1536014C00C2D31B /* InfoViewController.m */; };
@@ -105,6 +104,9 @@
 		04C40C24154743AD0047C463 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C40C1D154743AD0047C463 /* SBJsonParser.m */; };
 		04C40C25154743AD0047C463 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C40C1F154743AD0047C463 /* SBJsonWriter.m */; };
 		04D101F6151D0EA500C37A94 /* history.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04D101F5151D0EA500C37A94 /* history.plist */; };
+		04D2E267155062FD0031256D /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2E266155062FD0031256D /* ImagePickerViewController.m */; };
+		04D2E26A1550988C0031256D /* milkyway.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D2E2691550988C0031256D /* milkyway.png */; };
+		04D2E26D1551D67F0031256D /* LocationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2E26C1551D67F0031256D /* LocationDetailsViewController.m */; };
 		04D47E2E1519B41C002E0F29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D47E2D1519B41C002E0F29 /* UIKit.framework */; };
 		04D47E301519B41C002E0F29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D47E2F1519B41C002E0F29 /* Foundation.framework */; };
 		04D47E321519B41C002E0F29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D47E311519B41C002E0F29 /* CoreGraphics.framework */; };
@@ -239,8 +241,6 @@
 		048882951536014C00C2D31B /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 		048882961536014C00C2D31B /* AnnotationDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationDetails.h; sourceTree = "<group>"; };
 		048882971536014C00C2D31B /* AnnotationDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationDetails.m; sourceTree = "<group>"; };
-		048882981536014C00C2D31B /* AnnotationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationDetailsViewController.h; sourceTree = "<group>"; };
-		048882991536014C00C2D31B /* AnnotationDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationDetailsViewController.m; sourceTree = "<group>"; };
 		0488829A1536014C00C2D31B /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		0488829B1536014C00C2D31B /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		0488829C1536014C00C2D31B /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -295,6 +295,11 @@
 		04C40C1E154743AD0047C463 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		04C40C1F154743AD0047C463 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		04D101F5151D0EA500C37A94 /* history.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = history.plist; sourceTree = "<group>"; };
+		04D2E265155062FD0031256D /* ImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerViewController.h; sourceTree = "<group>"; };
+		04D2E266155062FD0031256D /* ImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerViewController.m; sourceTree = "<group>"; };
+		04D2E2691550988C0031256D /* milkyway.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = milkyway.png; sourceTree = "<group>"; };
+		04D2E26B1551D67F0031256D /* LocationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailsViewController.h; sourceTree = "<group>"; };
+		04D2E26C1551D67F0031256D /* LocationDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailsViewController.m; sourceTree = "<group>"; };
 		04D47E291519B41C002E0F29 /* CandyFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CandyFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D47E2D1519B41C002E0F29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		04D47E2F1519B41C002E0F29 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -435,6 +440,7 @@
 				048882D615362EB800C2D31B /* candies.png */,
 				048882691535FFB500C2D31B /* Default.png */,
 				0488826A1535FFB500C2D31B /* Icon.png */,
+				04D2E2691550988C0031256D /* milkyway.png */,
 				0488822C1535FEBD00C2D31B /* background_AddBody.png */,
 				0488822D1535FEBD00C2D31B /* background_AddBody_half.png */,
 				0488822E1535FEBD00C2D31B /* background_AddHeader.png */,
@@ -527,8 +533,6 @@
 				048882951536014C00C2D31B /* AddressViewController.m */,
 				048882961536014C00C2D31B /* AnnotationDetails.h */,
 				048882971536014C00C2D31B /* AnnotationDetails.m */,
-				048882981536014C00C2D31B /* AnnotationDetailsViewController.h */,
-				048882991536014C00C2D31B /* AnnotationDetailsViewController.m */,
 				0488829A1536014C00C2D31B /* HistoryViewController.h */,
 				0488829B1536014C00C2D31B /* HistoryViewController.m */,
 				0488829C1536014C00C2D31B /* HomeViewController.h */,
@@ -557,6 +561,10 @@
 				04190E0C154D0BB0004AD3F6 /* UserLoginViewController.m */,
 				04190E0E154D0BBE004AD3F6 /* SignUpViewController.h */,
 				04190E0F154D0BBE004AD3F6 /* SignUpViewController.m */,
+				04D2E265155062FD0031256D /* ImagePickerViewController.h */,
+				04D2E266155062FD0031256D /* ImagePickerViewController.m */,
+				04D2E26B1551D67F0031256D /* LocationDetailsViewController.h */,
+				04D2E26C1551D67F0031256D /* LocationDetailsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -937,6 +945,7 @@
 				045B24A6154885F80087CE58 /* LogoutPressed.png in Resources */,
 				045B24A7154885F80087CE58 /* LogoutPressed@2x.png in Resources */,
 				045B24A9154888940087CE58 /* LoginBackground.png in Resources */,
+				04D2E26A1550988C0031256D /* milkyway.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -983,7 +992,6 @@
 				048882921536009600C2D31B /* Web.m in Sources */,
 				048882AE1536014C00C2D31B /* AddressViewController.m in Sources */,
 				048882AF1536014C00C2D31B /* AnnotationDetails.m in Sources */,
-				048882B01536014C00C2D31B /* AnnotationDetailsViewController.m in Sources */,
 				048882B11536014C00C2D31B /* HistoryViewController.m in Sources */,
 				048882B21536014C00C2D31B /* HomeViewController.m in Sources */,
 				048882B31536014C00C2D31B /* InfoViewController.m in Sources */,
@@ -1017,6 +1025,8 @@
 				04190E09154D0753004AD3F6 /* NoAnimationSegue.m in Sources */,
 				04190E0D154D0BB0004AD3F6 /* UserLoginViewController.m in Sources */,
 				04190E10154D0BBE004AD3F6 /* SignUpViewController.m in Sources */,
+				04D2E267155062FD0031256D /* ImagePickerViewController.m in Sources */,
+				04D2E26D1551D67F0031256D /* LocationDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

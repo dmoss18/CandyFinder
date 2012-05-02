@@ -17,7 +17,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewCandyViewController : UIViewController < ZBarReaderDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIAlertViewDelegate > {
+@interface NewCandyViewController : UIViewController < ZBarReaderDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate > {
     //Container for the barcode sku/upc
     NSString *sku;
     
@@ -36,6 +36,8 @@
     
     //An image of the barcode that the user scanned.
     UIImageView *imageView;
+    
+    BOOL isScanning;
 }
 
 @property (nonatomic, strong) NSString *sku;
@@ -57,6 +59,8 @@
 //Displays confirmation form
 //If user clicks ok, sends a request to add a candy then dismisses self
 - (IBAction)displayActionSheet:(id)sender;
+
+- (IBAction)displayCamera:(id)sender;
 
 - (IBAction)tempSave:(id)sender;
 

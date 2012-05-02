@@ -76,6 +76,7 @@
     // e.g. self.myOutlet = nil;
     
     self.responseData = nil;
+    self.searchDisplayController.delegate = nil;
     
 }
 
@@ -252,8 +253,8 @@
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.detailTextLabel.text = candy.subtitle;
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-    //UIImage *image = [UIImage imageNamed:@"milkyway.png"];
-    //cell.imageView.image = image;
+    UIImage *image = [UIImage imageNamed:@"milkyway.png"];
+    cell.imageView.image = image;
     
     return cell;
 }

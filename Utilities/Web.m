@@ -8,11 +8,16 @@
 
 #import "Web.h"
 #import "SynthesizeSingleton.h"
-#import "SBJson.h"
+#import "JSON.h"
 #import "globals.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "User.h"
+#import "AppDelegate.h"
 
 @implementation Web
+
+#define USER_FOUND          200
+#define INVALID_AUTH_TOKEN  404
 
 @synthesize responseData;
 
@@ -86,5 +91,52 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Web);
     //send it and forget it
     [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
 }
+
+
+#pragma mark - User info
+-(void)getUserInfo:(NSString *)authentication_token {
+    //Using NSURL send the message
+    NSMutableData *responseData = [NSMutableData data];
+    NSString *url = [NSString stringWithFormat:GET_USER, authentication_token];
+    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+#pragma mark JSON Request section
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    [responseData setLength:0];
+    //[responseData removeAllObjects];
+}
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    [responseData appendData:data];
+}
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+	//resultText.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    
+    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    
+	NSDictionary *userInfo = [responseString JSONValue];
+    
+    if([userInfo objectForKey:@"status"]) {
+        switch ([[userInfo objectForKey:@"status"] intValue]) {
+            case USER_FOUND: {
+                User *user = [User userFromDictionary:[userInfo objectForKey:@"user"]];
+                user.authentication_token = [userInfo objectForKey:@"authentication_token"];
+                ((AppDelegate *)[[UIApplication sharedApplication] delegate]).user = user;
+                break;
+            }
+            case INVALID_AUTH_TOKEN:
+                [((AppDelegate *)[[UIApplication sharedApplication] delegate]) userDidLogout];
+                break;
+            default:
+                break;
+        }
+    }
+}
+
 
 @end

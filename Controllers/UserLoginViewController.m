@@ -141,6 +141,7 @@
                 AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                 app.user = [User userFromDictionary:[authResponse objectForKey:@"user"]];
                 app.user.authentication_token = [authResponse objectForKey:@"authentication_token"];
+                [app userDidLogin];
                 
                 //Dismiss view and go to app
                 [self.navigationController dismissModalViewControllerAnimated:YES];

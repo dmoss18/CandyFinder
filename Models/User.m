@@ -7,6 +7,8 @@
 //
 
 #import "User.h"
+#import "AppDelegate.h"
+#import "globals.h"
 
 @implementation User
 

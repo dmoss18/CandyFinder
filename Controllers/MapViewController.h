@@ -22,7 +22,6 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <CoreMotion/CoreMotion.h>
-#import "AnnotationDetailsViewController.h"
 #import "NewAnnotation.h"
 #import "AnnotationDetails.h"
 #import "Location.h"

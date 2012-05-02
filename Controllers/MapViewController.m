@@ -9,7 +9,6 @@
 #import "MapViewController.h"
 #import "globals.h"
 #import "TaggedLocation.h"
-#import "AnnotationDetailsViewController.h"
 #import "AppDelegate.h"
 #import "Web.h"
 #import "Candy.h"
@@ -19,6 +18,7 @@
 #import "Geocoder.h"
 #import "UIDevice+IdentifierAddition.h"
 #import "FlurryAnalytics.h"
+#import "LocationDetailsViewController.h"
 
 @implementation MapViewController
 
@@ -166,10 +166,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Make sure your segue name in storyboard is the same as this line
-    if ([[segue identifier] isEqualToString:@"MapToAnnotationDetails"])
+    if ([[segue identifier] isEqualToString:@"MapToLocationDetails"])
     {
         // Get reference to the destination view controller
-        AnnotationDetails *vc = (AnnotationDetails *)[segue destinationViewController];
+        LocationDetailsViewController *vc = (LocationDetailsViewController *)[segue destinationViewController];
         UIButton *button = (UIButton *)sender;
         
         // Pass any objects to the view controller here, like...
@@ -181,8 +181,6 @@
                 }
             }
         }
-        vc.location_id = button.tag;
-        vc.location_name = button.currentTitle;
         
         fromAnnotationDetails = YES;
     }
@@ -380,7 +378,7 @@
 -(IBAction)showInfo:(id)sender 
 {
     isFilteringByCandy = NO;
-    [self performSegueWithIdentifier:@"MapToAnnotationDetails" sender:sender];
+    [self performSegueWithIdentifier:@"MapToLocationDetails" sender:sender];
 }
 
 - (void) getAnnotationsForRegion {

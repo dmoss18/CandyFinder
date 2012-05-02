@@ -60,6 +60,8 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     [self.tableView reloadData];
+    
+    userUpdateCount = 0;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -107,7 +109,7 @@
             nameCell.imageView.image = app.user.pic;
             nameCell.detailTextLabel.text = @"Level 1: Candy Craver";
         } else {
-            [self performSelector:@selector(reloadTableAttributes) withObject:nil afterDelay:2];
+            [self performSelector:@selector(reloadTableAttributes) withObject:nil afterDelay:1];
         }
         return nameCell;
     }else if (indexPath.section == 1) {
@@ -257,7 +259,10 @@
     if(app.user) {
         [self.tableView reloadData];
     } else {
-        [self performSelector:@selector(reloadTableAttributes) withObject:nil afterDelay:2];
+        userUpdateCount += 1;
+        if(userUpdateCount > 5) {
+            [self performSelector:@selector(reloadTableAttributes) withObject:nil afterDelay:1];
+        }
     }
 }
 
@@ -280,7 +285,7 @@
 - (IBAction)logout:(id)sender {
     [logoutCell setSelected:NO];
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [app.facebook logout];
+    [app userDidLogout];
 }
 
 @end

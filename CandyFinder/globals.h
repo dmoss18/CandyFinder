@@ -55,6 +55,7 @@
 //Login, Logout, and Register
 #define LOGIN_PARAMETERS            @"http://www.candyfinder.net/mobile/login?email=%@&password=%@"
 #define LOGOUT_PARAMETERS           @"http://www.candyfinder.net/mobile/logout/%@"
+#define GET_USER                    @"http://www.candyfinder.net/mobile/user/%@"
 
 //Google Geocoding
 #define FIND_ADDRESS                @"https://maps.googleapis.com/maps/api/geocode/json?latlng=%@,%@&sensor=true"

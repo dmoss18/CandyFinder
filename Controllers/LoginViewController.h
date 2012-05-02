@@ -20,5 +20,6 @@
 @property (nonatomic, strong) IBOutlet UIImageView *profilePhotoImageView;
 
 - (IBAction)login:(id)sender;
+- (IBAction)continueWithoutLoggingIn:(id)sender;
 
 @end
