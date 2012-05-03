@@ -11,6 +11,7 @@
 
 #define DEBUG_MODE                  1 //Shows debug messages in console when set to 1
 #define NEW_ANNOTATION_FRAME        CGRectMake(15, 15, 640, 30)//x, y, width, height
+#define SCANNER_OVERLAY_FRAME       CGRectMake(0, 0, 320, 480)
 
 //Colors
 #define DARK_PINK                   [UIColor colorWithRed:0.631 green:0.467 blue:0.631 alpha:1.0] //Darker pink
@@ -62,9 +63,9 @@
 #define FIND_LATLON                 @"https://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true"
 
 //MapKit Labels
-#define ALL_LOCATIONS               @"All Locations Near You"
-#define CANDY_LOCATIONS             @"Found %i %@ locations"
-#define LABEL_SEARCH_LOCATIONS      @"Location results for '%@'"
+#define ALL_LOCATIONS               @"Showing All Locations Near You"
+#define CANDY_LOCATIONS             @"Showing %i %@ locations"
+#define LABEL_SEARCH_LOCATIONS      @"Showing Location results for '%@'"
 
 //Google Places API
 #define PLACES_URL                  @"https://maps.googleapis.com/maps/api/place/search/json?location=%@,%@&radius=%@&types=%@&sensor=true&key=%@"

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) IBOutlet UITableViewCell *directionsCell;
 @property (nonatomic, strong) IBOutlet UITableViewCell *phoneCell;
 @property (nonatomic, strong) IBOutlet UITableViewCell *inventoryCell;
+@property (nonatomic, strong) IBOutlet UITableViewCell *tagCandyCell;
 
 
 @end

@@ -47,6 +47,28 @@
     [self setTitle:location_name];
     addButtonTouched = NO;
     isGoingBackToMap = YES;
+    
+    indices = [[NSMutableDictionary alloc] init];
+    indexTitles = [[NSMutableArray alloc] init];
+    sectionRows = [[NSMutableDictionary alloc] init];
+    
+    filteredListContent = [[NSMutableArray alloc] init ];
+    
+    /*toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 387, 320, 44)];
+    [toolbar setBarStyle:UIBarStyleBlack];
+    UIBarButtonItem *tagNew = [[UIBarButtonItem alloc] initWithTitle:@"Tag Here" 
+                                                                       style:UIBarButtonItemStyleBordered 
+                                                                      target:self 
+                                                                      action:@selector(addButtonTapped:)];
+    
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonTapped:)];
+    
+    UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    [toolbar setItems:[NSArray arrayWithObjects:tagNew, extraSpace, refreshButton, nil]];
+    
+    [self.tabBarController.view addSubview:toolbar];*/
+    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -65,6 +87,8 @@
     // e.g. self.myOutlet = nil;
     
     self.locationCandies = nil;
+    
+    toolbar = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -108,6 +132,8 @@
         //So we set currentLocation to nil
         //[LocationPoster sharedLocationPoster].currentLocation = nil;
     }
+    
+    //[toolbar removeFromSuperview];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -139,13 +165,21 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    //return 1;
+    return [indexTitles count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return locationCandies.count;
+    return [[indices objectForKey:[NSString stringWithFormat:@"%irows", section]] intValue];
+    /*if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        return [filteredListContent count];
+    }
+	else
+	{
+        return [self.locationCandies count];
+    }*/
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -157,14 +191,35 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
+    if([indexPath row] % 2 == 0) {
+        cell.backgroundView = [[UIView alloc] init ]; 
+        cell.backgroundView.backgroundColor = LIGHT_BLUE;
+        cell.textLabel.backgroundColor = LIGHT_BLUE;
+        cell.detailTextLabel.backgroundColor = LIGHT_BLUE;
+    } else {
+        cell.backgroundView = [[UIView alloc] init ]; 
+        cell.backgroundView.backgroundColor = DARK_BLUE;
+        cell.textLabel.backgroundColor = DARK_BLUE;
+        cell.detailTextLabel.backgroundColor = DARK_BLUE;
+    }
+    
+    Candy *candy = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        candy = [filteredListContent objectAtIndex:indexPath.row];
+    }
+	else
+	{
+        candy = [self.locationCandies objectAtIndex:indexPath.row];
+    }
+    
     // Configure the cell...
-    NSUInteger row = [indexPath row];
-    Candy *candy = [locationCandies objectAtIndex:row];
+    
     cell.textLabel.text = candy.title;
     cell.textLabel.font = [UIFont systemFontOfSize:15.0];
     //cell.detailTextLabel.text = candy.subtitle;
-    UIImage *image = [UIImage imageNamed:@"milkyway.png"];
-    cell.imageView.image = image;
+    //UIImage *image = [UIImage imageNamed:@"milkyway.png"];
+    //cell.imageView.image = image;
     
     /*UILabel *lastSeen = [[UILabel alloc] initWithFrame:CGRectMake(198.0, 0.0, 72.0, 21.0)];
     lastSeen.text = @"Last seen:";
@@ -233,8 +288,8 @@
     [updateButton setTitle:@"Update" forState:UIControlStateNormal];
     updateButton.titleLabel.font = [UIFont systemFontOfSize:9.0];
     updateButton.titleLabel.textColor = [UIColor darkGrayColor];
-    //updateButton.tag = [candy.candy_id intValue];
-    updateButton.tag = [indexPath row];
+    updateButton.tag = [candy.candy_id intValue];
+    //updateButton.tag = [indexPath row];
     
     [updateButton addTarget:self action:@selector(updateButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -295,6 +350,15 @@
      */
 }
 
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    //return [NSArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", nil];
+    return indexTitles;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    return [(NSNumber *)[indices objectForKey:title] intValue];
+}
+
 #pragma mark JSON Request section
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     [responseData setLength:0];
@@ -309,17 +373,39 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     [indicator stopAnimating];
     
+    self.locationCandies = nil;
+    
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
 	NSDictionary *candyInfo = [responseString JSONValue];
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-    
     for (NSDictionary *item in candyInfo){
+        NSString *character = [[NSString stringWithFormat:@"%C", [[item objectForKey:@"title"] characterAtIndex:0]] uppercaseString];
+        
+        if(![indices objectForKey:character]) {
+            //Dictionary doesn't contain a value for this key (which is a letter of the alphabet)
+            //Insert value
+            [indices setObject:[NSNumber numberWithInt:[indexTitles count]] forKey:character];
+            [indices setObject:[NSNumber numberWithInt:1] forKey:[NSString stringWithFormat:@"%irows", [indexTitles count]]];
+            
+            //Indextitles is also what is used for section titles and # rows in each section
+            [indexTitles addObject:character];
+        } else {
+            //Increment the "rows" value
+            NSInteger rowCount = [[indices objectForKey:[NSString stringWithFormat:@"%irows", [indexTitles count]]] intValue];
+            rowCount += 1;
+            [indices setObject:[NSNumber numberWithInt:rowCount] forKey:[NSString stringWithFormat:@"%irows", [indexTitles count]]];
+        }
         [tempArray addObject:[Candy candyFromDictionary:item]];
     }
     
     self.locationCandies = tempArray;
     [self.tableView reloadData];
+}
+
+- (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section {
+	return [indexTitles objectAtIndex:section];
+    
 }
 
 #pragma mark - Helper Methods
@@ -341,12 +427,28 @@
     [self displayActionSheet:sender];
 }
 
+- (IBAction)refreshButtonTapped:(id)sender {
+    [indicator startAnimating];
+    
+    //Using NSURL send the message
+    responseData = [NSMutableData data];
+    NSString *url = [NSString stringWithFormat:CANDIES_FROM_LOCATION, [NSString stringWithFormat:@"%i", location_id]];
+    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
 #pragma mark - Action Sheet
 #pragma mark - Action Sheet
 - (IBAction)displayActionSheet:(id)sender {
-    Candy *candy = [locationCandies objectAtIndex:((UIButton *)sender).tag];
-    self.updateCandy = candy;
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Confirm that %@ still carries %@?", location.name, candy.title]
+    for(Candy *c in locationCandies) {
+        if([c.candy_id isEqualToString:[NSString stringWithFormat:@"%i", ((UIButton *)sender).tag]]) {
+            self.updateCandy = c;
+            break;
+        }
+    }
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Confirm that %@ still carries %@?", location.name, updateCandy.title]
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
@@ -363,11 +465,62 @@
             updateCandy.updated_at = [NSDate date];
             [[LocationPoster sharedLocationPoster] updateAnnotationLocation:location withCandy:updateCandy];
             [self.tableView reloadData];
+            [self.searchDisplayController.searchResultsTableView reloadData];
+            //[self refreshButtonTapped:self];
             break;
         }
         default:
             break;
     }
+}
+
+#pragma mark -
+#pragma mark UISearchDisplayController Delegate Methods
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    /*
+	 Update the filtered array based on the search text and scope.
+	 */
+	
+	[filteredListContent removeAllObjects]; // First clear the filtered array.
+	
+	/*
+	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
+	 */
+	for (Candy *c in locationCandies)
+	{
+		//if ([scope isEqualToString:@"All"] || [l.name isEqualToString:scope])
+		//{
+        //NSComparisonResult result = [c.title compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+        //if (result == NSOrderedSame)
+        if ([c.title.lowercaseString rangeOfString:searchText.lowercaseString].location != NSNotFound)
+        {
+            [filteredListContent addObject:c];
+        }
+		//}
+	}
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    [self filterContentForSearchText:searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [searchBar resignFirstResponder];
+    //self.navigationItem.rightBarButtonItem = nil;
 }
 
 @end

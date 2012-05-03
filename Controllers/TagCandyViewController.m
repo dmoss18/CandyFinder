@@ -19,6 +19,7 @@
 #import "NewAnnotation.h"
 #import "FlurryAnalytics.h"
 #import "FBDataGetter.h"
+#import "ScannerOverlayView.h"
 
 @implementation TagCandyViewController
 
@@ -390,6 +391,10 @@
             
             [[LocationPoster sharedLocationPoster] postAnnotationForCandy:c];
             
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thank You" message:@"You tagged a candy!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert dismissWithClickedButtonIndex:0 animated:YES];
+            [alert show];
+            
             //Posting to the feed will look like this:
             //538985750/feed?app_id=158944047567520&   link=http://developers.facebook.com/docs/reference/dialogs/&   picture=http://fbrell.com/f8.jpg&   name=Facebook%20Dialogs&   caption=Reference%20Documentation&   description=Using%20Dialogs%20to%20interact%20with%20users.
             //The name becomes a link with "link"'s url
@@ -407,6 +412,8 @@
             
             NSString *candyName = [NSString stringWithFormat:@"%@ %@", c.title, c.subtitle];
             [FlurryAnalytics logEvent:CANDIES_TAGGED withParameters:[NSDictionary dictionaryWithObject:candyName forKey:@"name"]];
+            
+            [(UITableViewCell *)[self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]] setSelected:NO];
             break;
         }
         default:
@@ -498,6 +505,8 @@
     ZBarReaderViewController *reader = [ZBarReaderViewController new];
     reader.readerDelegate = self;
     reader.supportedOrientationsMask = ZBarOrientationMaskAll;
+    
+    [reader setCameraOverlayView:[[ScannerOverlayView alloc] initWithFrame:SCANNER_OVERLAY_FRAME]];
     
     ZBarImageScanner *scanner = reader.scanner;
     // TODO: (optional) additional reader configuration here

@@ -17,7 +17,7 @@
 #import "Location.h"
 #import "Candy.h"
 
-@interface AnnotationDetails : UITableViewController <UIActionSheetDelegate> {
+@interface AnnotationDetails : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate, UIActionSheetDelegate> {
     //TableView source
     NSArray *locationCandies;
     
@@ -37,7 +37,20 @@
     
     //Container for a candy that the user wants to update.
     //Gets set when the user taps "Update," thereby verifying that annotation
-    Candy *updateCandy;
+    NSString *updateCandy_id;
+    
+    UIToolbar *toolbar;
+    
+    // The content filtered as a result of a search
+    NSMutableArray	*filteredListContent;
+    
+    //Holds the index values for the index titles
+    NSMutableDictionary *indices;
+    
+    //Holds the titles for the side index
+    NSMutableArray *indexTitles;
+    
+    NSMutableDictionary *sectionRows;
 }
 
 @property (nonatomic, strong) NSArray *locationCandies;
@@ -59,5 +72,7 @@
 //Displays a confirmation action sheet after the user clicks "Update"
 //Sends off a PUT request using Web.h to update a certain annotation
 - (IBAction)displayActionSheet:(id)sender;
+
+- (IBAction)refreshButtonTapped:(id)sender;
 
 @end

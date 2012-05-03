@@ -346,6 +346,35 @@
             </objects>
             <point key="canvasLocation" x="1167" y="1501"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="8Xu-TQ-yvu">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PsH-dE-ygn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="X7K-Tf-0nr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IHf-Sz-weT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000013" contentMode="scaleToFill" image="scanner_overlay_gray_box.png" id="GHy-au-4aT">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Scan the barcode in the  area below" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="N13-ua-zYd">
+                                <rect key="frame" x="20" y="20" width="280" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.053560567470000001" green="0.51764356450000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1765" y="1811"/>
+        </scene>
         <!--Navigation Controller - History-->
         <scene sceneID="75x-wc-98t">
             <objects>
@@ -840,7 +869,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackOpaque" id="zG6-N9-8KU">
+                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackOpaque" placeholder="Type a location name to search" id="zG6-N9-8KU">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -1014,7 +1043,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="YT0-ng-WBj">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="330"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="1vx-Pz-iUt" id="Uj8-67-09y"/>
@@ -1028,43 +1057,6 @@
                                     <outlet property="delegate" destination="1vx-Pz-iUt" id="UGv-nB-zns"/>
                                 </connections>
                             </searchBar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="All locations near you" lineBreakMode="tailTruncation" minimumFontSize="10" id="HoY-E2-jn9">
-                                <rect key="frame" x="20" y="338" width="242" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cyA-ra-lo0">
-                                <rect key="frame" x="263" y="335" width="44" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Clear">
-                                    <color key="titleColor" red="0.59999999999999998" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismissAnnotationsForCandy:" destination="1vx-Pz-iUt" eventType="touchUpInside" id="hu5-KP-3j9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MsH-zM-3UX">
-                                <rect key="frame" x="263" y="294" width="44" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="ME">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="myLocation:" destination="1vx-Pz-iUt" eventType="touchUpInside" id="yJH-75-qIP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.47058826684951782" green="0.33725491166114807" blue="0.25490197539329529" alpha="1" colorSpace="deviceRGB"/>
                     </view>
@@ -1078,7 +1070,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filterBar" destination="xHC-Jw-yNb" id="hk0-0F-SFH"/>
-                        <outlet property="locationsNearYou" destination="HoY-E2-jn9" id="9oe-OM-Fdi"/>
                         <outlet property="mapView" destination="YT0-ng-WBj" id="1DO-dd-tjh"/>
                         <segue destination="uhq-Ud-eJv" kind="push" identifier="MapToLocationDetails" id="gqd-lT-hCQ"/>
                     </connections>
@@ -1112,7 +1103,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Address" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eWT-xe-0PL">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Address" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eWT-xe-0PL">
                                                     <rect key="frame" x="100" y="52" width="52" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1149,11 +1140,11 @@
                             </tableViewSection>
                             <tableViewSection id="AdM-Zk-L4s">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="inventory" textLabel="LhJ-Qg-oJ6" detailTextLabel="edG-tL-6dl" style="IBUITableViewCellStyleValue1" id="6Zf-5B-4FA">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="inventory" textLabel="LhJ-Qg-oJ6" detailTextLabel="edG-tL-6dl" style="IBUITableViewCellStyleValue1" id="6Zf-5B-4FA">
                                         <rect key="frame" x="0.0" y="176" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LhJ-Qg-oJ6">
@@ -1164,7 +1155,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="+1 (801) 123 4567" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="edG-tL-6dl">
-                                                    <rect key="frame" x="150" y="11" width="140" height="21"/>
+                                                    <rect key="frame" x="130" y="11" width="140" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
@@ -1185,7 +1176,29 @@
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Full inventory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UIf-U4-Qn1">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Tag Candy Here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UIf-U4-Qn1">
+                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="aAC-i9-4bx">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="inventory" textLabel="2OJ-es-pek" style="IBUITableViewCellStyleDefault" id="u4r-jx-RWY">
+                                        <rect key="frame" x="0.0" y="308" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Full inventory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2OJ-es-pek">
                                                     <rect key="frame" x="10" y="0.0" width="260" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1207,9 +1220,10 @@
                     <navigationItem key="navigationItem" id="DCR-xX-806"/>
                     <connections>
                         <outlet property="directionsCell" destination="wYY-3v-z06" id="An0-xN-tUS"/>
-                        <outlet property="inventoryCell" destination="Poj-SX-TcT" id="ci4-a8-V5e"/>
+                        <outlet property="inventoryCell" destination="u4r-jx-RWY" id="XlM-SO-WCE"/>
                         <outlet property="nameCell" destination="Pox-6g-WDY" id="aYS-FW-0gR"/>
                         <outlet property="phoneCell" destination="6Zf-5B-4FA" id="gQc-cZ-U9B"/>
+                        <outlet property="tagCandyCell" destination="Poj-SX-TcT" id="jjW-A1-7s1"/>
                         <segue destination="8xL-sW-AbE" kind="push" identifier="LocationToAnnotationDetails" id="DWo-1c-eUX"/>
                     </connections>
                 </tableViewController>
@@ -1225,9 +1239,17 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackOpaque" id="6Mc-Un-n89">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="8xL-sW-AbE" id="Tda-wS-3sx"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="NPr-qF-0zZ">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1280,14 +1302,26 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Candies" id="uId-H4-otO">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RVo-Da-3B7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="RVo-Da-3B7">
                             <color key="tintColor" red="0.59999999999999998" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="addButtonTapped:" destination="8xL-sW-AbE" id="EfR-KZ-fC1"/>
+                                <action selector="refreshButtonTapped:" destination="8xL-sW-AbE" id="w4E-Li-VtG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="tUb-CL-1S0" id="YSo-8E-U3x"/>
+                    </connections>
                 </tableViewController>
+                <searchDisplayController id="tUb-CL-1S0">
+                    <connections>
+                        <outlet property="delegate" destination="8xL-sW-AbE" id="2XV-C0-Srs"/>
+                        <outlet property="searchBar" destination="6Mc-Un-n89" id="3sW-KG-cKT"/>
+                        <outlet property="searchContentsController" destination="8xL-sW-AbE" id="JgX-pT-cpN"/>
+                        <outlet property="searchResultsDataSource" destination="8xL-sW-AbE" id="ZNU-vO-Fcq"/>
+                        <outlet property="searchResultsDelegate" destination="8xL-sW-AbE" id="gQK-3G-oKn"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2198" y="180"/>
         </scene>
@@ -1318,7 +1352,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackOpaque" id="RFf-3z-Z8x">
+                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackOpaque" placeholder="Type a candy name to search" id="RFf-3z-Z8x">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -1393,6 +1427,7 @@
         <image name="btn_scanner.png" width="185" height="71"/>
         <image name="crossHairs.png" width="80" height="72"/>
         <image name="powered-by-google-on-non-white.png" width="104" height="16"/>
+        <image name="scanner_overlay_gray_box.png" width="320" height="436"/>
         <image name="tab_find_Alpha_30.png" width="30" height="30"/>
         <image name="tab_history_Alpha_30.png" width="30" height="30"/>
         <image name="tab_info_Alpha_30.png" width="30" height="30"/>
@@ -1404,6 +1439,7 @@
             <relationships>
                 <relationship kind="action" name="addButtonTapped:"/>
                 <relationship kind="action" name="displayActionSheet:"/>
+                <relationship kind="action" name="refreshButtonTapped:"/>
                 <relationship kind="action" name="updateButtonTapped:"/>
             </relationships>
         </class>
@@ -1433,6 +1469,7 @@
                 <relationship kind="outlet" name="inventoryCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="nameCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="phoneCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="tagCandyCell" candidateClass="UITableViewCell"/>
             </relationships>
         </class>
         <class className="LoginViewController" superclassName="UIViewController">
@@ -1544,6 +1581,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hy2-CE-VLp"/>
-        <segue reference="Bln-6I-oCC"/>
+        <segue reference="yjj-XD-Ycm"/>
     </inferredMetricsTieBreakers>
 </document>

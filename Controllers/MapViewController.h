@@ -54,6 +54,8 @@
     
     //isFilteringByLocation tells the app that the user wants to zoom to the matching locations
     BOOL isFilteringByLocation;
+    
+    UIToolbar *toolbar;
 }
 
 @property (nonatomic, strong) IBOutlet MKMapView *mapView;

@@ -63,6 +63,35 @@
     locationManager.distanceFilter = 0.0;
     
     [filterBar setBackgroundImage:[UIImage imageNamed:@"chocolage_bg_tall.png"]];
+    
+    
+    //Add toolbar to bottom for clear button
+    toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 387, 320, 44)];
+     [toolbar setBarStyle:UIBarStyleBlack];
+     UIBarButtonItem *meButton = [[UIBarButtonItem alloc] initWithTitle:@"Me" 
+     style:UIBarButtonItemStyleBordered 
+     target:self 
+     action:@selector(myLocation:)];
+     
+    UIBarButtonItem *clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear" 
+                                                                 style:UIBarButtonItemStyleBordered 
+                                                                target:self 
+                                                                action:@selector(dismissAnnotationsForCandy:)];
+     
+     UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+     
+     [toolbar setItems:[NSArray arrayWithObjects:clearButton, extraSpace, meButton, nil]];
+    
+    UILabel *templabel = [[UILabel alloc] initWithFrame:CGRectMake(62, 1, 210, 40)];
+    templabel.text = ALL_LOCATIONS;
+    templabel.backgroundColor = [UIColor clearColor];
+    templabel.textColor = [UIColor whiteColor];
+    templabel.font = [UIFont systemFontOfSize:14.0];
+    templabel.numberOfLines = 0;
+    templabel.lineBreakMode = UILineBreakModeWordWrap;
+    self.locationsNearYou = templabel;
+    
+    [toolbar addSubview:locationsNearYou];
 }
 
 - (void)viewDidUnload
@@ -75,6 +104,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    
+    //Add the toolbar to the bottom
+    [self.tabBarController.view addSubview:toolbar];
+    
     
     [locationManager startUpdatingLocation];
     isLocating = YES;
@@ -150,6 +184,8 @@
     
     [locationManager stopUpdatingLocation];
     isLocating = NO; // When the annotationDetails view disappears, it re-zooms the map.  This should not be
+    
+    [toolbar removeFromSuperview];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -505,8 +541,10 @@
     if(isFilteringByCandy) {
         tempArray = (NSMutableArray *)mapView.annotations;
         //[mapView setVisibleMapRect:[Location calculateRegionFromLocations:tempArray] animated:YES];
+        
         if(isFirstTimeLoading) {
             isFirstTimeLoading = NO;
+            
             //MKUserLocation isn't in the annotations array yet, so we don't subtract one from the count
             locationsNearYou.text = [NSString stringWithFormat:CANDY_LOCATIONS, [mapView.annotations count], labelHolder];
             //Add user's location from the delegate since the map hasn't loaded it yet.  This doesn't get added to the mapview though

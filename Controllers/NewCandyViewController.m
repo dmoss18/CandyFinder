@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "Web.h"
 #import "FlurryAnalytics.h"
+#import "ScannerOverlayView.h"
 
 @implementation NewCandyViewController
 
@@ -100,6 +101,8 @@
     ZBarReaderViewController *reader = [ZBarReaderViewController new];
     reader.readerDelegate = self;
     reader.supportedOrientationsMask = ZBarOrientationMaskAll;
+    
+    [reader setCameraOverlayView:[[ScannerOverlayView alloc] initWithFrame:SCANNER_OVERLAY_FRAME]];
     
     ZBarImageScanner *scanner = reader.scanner;
     // TODO: (optional) additional reader configuration here

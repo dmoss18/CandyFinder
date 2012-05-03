@@ -40,6 +40,7 @@ NSString	*kAppID	= @"158944047567520";
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Top Bar Blank.png"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTintColor:DARK_PINK];
     [[UISearchBar appearance] setTintColor:DARK_PINK];
+    [[UIToolbar appearance] setTintColor:CHOCOLATE];
     
     
     

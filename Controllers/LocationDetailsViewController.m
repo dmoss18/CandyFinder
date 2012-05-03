@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "Location.h"
 #import "AnnotationDetails.h"
+#import "LocationPoster.h"
 
 @interface LocationDetailsViewController ()
 
@@ -17,7 +18,7 @@
 
 @implementation LocationDetailsViewController
 
-@synthesize location, directionsCell, nameCell, phoneCell, inventoryCell;
+@synthesize location, directionsCell, nameCell, phoneCell, inventoryCell, tagCandyCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -72,7 +73,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -86,6 +87,9 @@
             return 1;
             break;
         case 2:
+            return 1;
+            break;
+        case 3:
             return 1;
             break;
         default:
@@ -136,6 +140,10 @@
         
         return phoneCell;
     }else if (indexPath.section == 2) {
+        //Tag Candy cell
+        //Already configured
+        return tagCandyCell;
+    }else if (indexPath.section == 3) {
         //Inventory cell
         //Already configured
         return inventoryCell;
@@ -210,6 +218,15 @@
             break;
         }
         case 2: {
+            //Tag Candy
+            //Set selected index to 1 (for "Tag New")
+            if(location) {
+                [LocationPoster sharedLocationPoster].currentLocation = location;
+            }
+            [self.tabBarController setSelectedIndex:1];
+            break;
+        }
+        case 3: {
             //Inventory
             //Segue to annotation details
             [self performSegueWithIdentifier:@"LocationToAnnotationDetails" sender:self];

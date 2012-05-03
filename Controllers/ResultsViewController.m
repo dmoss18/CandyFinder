@@ -16,6 +16,7 @@
 #import "UIDevice+IdentifierAddition.h"
 #import "FlurryAnalytics.h"
 #import "AnnotationDetails.h"
+#import "ScannerOverlayView.h"
 
 @implementation ResultsViewController
 
@@ -130,6 +131,9 @@
     ZBarReaderViewController *reader = [ZBarReaderViewController new];
     reader.readerDelegate = self;
     reader.supportedOrientationsMask = ZBarOrientationMaskAll;
+    
+    [reader setCameraOverlayView:[[ScannerOverlayView alloc] initWithFrame:SCANNER_OVERLAY_FRAME]];
+    
     
     ZBarImageScanner *scanner = reader.scanner;
     // TODO: (optional) additional reader configuration here
