@@ -50,7 +50,8 @@
     
     indices = [[NSMutableDictionary alloc] init];
     indexTitles = [[NSMutableArray alloc] init];
-    sectionRows = [[NSMutableDictionary alloc] init];
+    sectionRows = [[NSMutableArray alloc] init];
+    sectionIndexes = [[NSMutableArray alloc] init];
     
     filteredListContent = [[NSMutableArray alloc] init ];
     
@@ -166,20 +167,26 @@
 {
     // Return the number of sections.
     //return 1;
-    return [indexTitles count];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return 1;
+    } else {
+        return [indexTitles count];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[indices objectForKey:[NSString stringWithFormat:@"%irows", section]] intValue];
-    /*if (tableView == self.searchDisplayController.searchResultsTableView)
+    //return [[indices objectForKey:[NSString stringWithFormat:@"section%i", section]] intValue];
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
         return [filteredListContent count];
     }
 	else
 	{
-        return [self.locationCandies count];
-    }*/
+        return [[sectionRows objectAtIndex:section] intValue];
+        //return [self.locationCandies count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -210,7 +217,7 @@
     }
 	else
 	{
-        candy = [self.locationCandies objectAtIndex:indexPath.row];
+        candy = [self.locationCandies objectAtIndex:([[sectionIndexes objectAtIndex:indexPath.section] intValue] + indexPath.row)];
     }
     
     // Configure the cell...
@@ -233,7 +240,7 @@
     NSString *timeAgo;
     double minutes = round(timeInterval / 60);
     if(minutes < 60) {
-        timeAgo = [NSString stringWithFormat:@"Last seen: %.f minutes ago", round(minutes)];
+        timeAgo = [NSString stringWithFormat:@"Last seen: %.f %@ ago", round(minutes), minutes == 1? @"minute":@"minutes"];
     } else {
         double hours = round((timeInterval / 60) / 60);
         if(hours < 24){
@@ -352,11 +359,19 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     //return [NSArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", nil];
-    return indexTitles;
+    if(tableView == self.searchDisplayController.searchResultsTableView) {
+        return nil;
+    } else {
+        return indexTitles;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-    return [(NSNumber *)[indices objectForKey:title] intValue];
+    if(tableView == self.searchDisplayController.searchResultsTableView) {
+        return 0;
+    } else {
+        return [(NSNumber *)[indices objectForKey:title] intValue];
+    }
 }
 
 #pragma mark JSON Request section
@@ -379,23 +394,40 @@
     
 	NSDictionary *candyInfo = [responseString JSONValue];
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    int indexCount = 0;
     for (NSDictionary *item in candyInfo){
         NSString *character = [[NSString stringWithFormat:@"%C", [[item objectForKey:@"title"] characterAtIndex:0]] uppercaseString];
         
         if(![indices objectForKey:character]) {
             //Dictionary doesn't contain a value for this key (which is a letter of the alphabet)
-            //Insert value
+            
+            //Set the section index of the section title (section "A" = 0, "B" = 1, etc)
             [indices setObject:[NSNumber numberWithInt:[indexTitles count]] forKey:character];
-            [indices setObject:[NSNumber numberWithInt:1] forKey:[NSString stringWithFormat:@"%irows", [indexTitles count]]];
+            
+            [indices setObject:[NSNumber numberWithInt:1] forKey:[NSString stringWithFormat:@"section%i", [indexTitles count]]];
+            
+            //Set the number of rows in each section.  Since this is a new section, set it to 1
+            [sectionRows insertObject:[NSNumber numberWithInt:1] atIndex:[indexTitles count]];
+            
+            //Set the index of the 1st object in a section.  We use this to know where to start pulling from locationCandies
+            [sectionIndexes insertObject:[NSNumber numberWithInt:indexCount] atIndex:[indexTitles count]];
             
             //Indextitles is also what is used for section titles and # rows in each section
             [indexTitles addObject:character];
         } else {
             //Increment the "rows" value
-            NSInteger rowCount = [[indices objectForKey:[NSString stringWithFormat:@"%irows", [indexTitles count]]] intValue];
+            //NSInteger rowCount = [[indices objectForKey:[NSString stringWithFormat:@"section%i", ([indexTitles count] - 1)]] intValue];
+            //rowCount += 1;
+            //[indices setObject:[NSNumber numberWithInt:rowCount] forKey:[NSString stringWithFormat:@"section%i", ([indexTitles count] - 1)]];
+            
+            NSInteger rowCount = [[sectionRows objectAtIndex:([indexTitles count] - 1)] intValue];
             rowCount += 1;
-            [indices setObject:[NSNumber numberWithInt:rowCount] forKey:[NSString stringWithFormat:@"%irows", [indexTitles count]]];
+            [sectionRows insertObject:[NSNumber numberWithInt:rowCount] atIndex:([indexTitles count] - 1)];
         }
+        //Increment indexCount so we pull the correct candy from locationCandies (used by sectionIndexes)
+        indexCount += 1;
+        
+        //Add candy object to array
         [tempArray addObject:[Candy candyFromDictionary:item]];
     }
     
@@ -464,8 +496,12 @@
             //PUT annotation here (update it)
             updateCandy.updated_at = [NSDate date];
             [[LocationPoster sharedLocationPoster] updateAnnotationLocation:location withCandy:updateCandy];
-            [self.tableView reloadData];
-            [self.searchDisplayController.searchResultsTableView reloadData];
+            
+            if(self.navigationController.navigationBarHidden) {
+                [self.searchDisplayController.searchResultsTableView reloadData];
+            } else {
+                [self.tableView reloadData];
+            }
             //[self refreshButtonTapped:self];
             break;
         }

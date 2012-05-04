@@ -50,7 +50,13 @@
     //Holds the titles for the side index
     NSMutableArray *indexTitles;
     
-    NSMutableDictionary *sectionRows;
+    //Container for the number of rows in each section
+    //The section # matches the array index
+    NSMutableArray *sectionRows;
+    
+    //Container for the index of the 1st element in each section
+    //Section # matches the array index
+    NSMutableArray *sectionIndexes;
 }
 
 @property (nonatomic, strong) NSArray *locationCandies;
